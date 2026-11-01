@@ -21,6 +21,10 @@ services:
     envVars:
       - key: NODE_VERSION
         value: "24"
+      # Render auto-installs dependencies before the build command. Disable
+      # that so the pinned pnpm version below drives the workspace install.
+      - key: SKIP_INSTALL_DEPS
+        value: "true"
       - key: NEAR_NETWORK
         value: testnet
       - key: NEAR_RPC_URL

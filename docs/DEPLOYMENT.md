@@ -217,6 +217,10 @@ dashboard:
 7. After Vercel is live, set `KEEPER_CORS_ORIGIN` to the Vercel URL and
    redeploy/restart the keeper.
 
+The Blueprint sets `SKIP_INSTALL_DEPS=true` and pins
+`pnpm@11.9.0` in the build command, so Render does not run its older
+automatic pnpm install against the workspace first.
+
 Free-tier caveats:
 
 - 750 instance hours are enough for one service at ~720-744 hours/month; do not
