@@ -375,7 +375,7 @@ https://github.com/Lesnak1/tabwrit
 Testnet only. 1Click is a quote, not a settlement.
 ```
 
-Do not export with `https://github.com/Lesnak1/tabwrit` or `[HOSTED_DEMO_URL]` placeholders. Replace them with live URLs, or add them in editing after the repository is public.
+Do not export with the `[HOSTED_DEMO_URL]` placeholder. Replace it with the live Vercel URL, or add it in editing after the hosted demo is live. The repository URL is already filled.
 
 **English VO:**
 > TabWrit. Every Tab has a Writ. Built at NEAR HACKATHON 2026. The repository
