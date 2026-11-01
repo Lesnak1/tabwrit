@@ -52,7 +52,7 @@ not delay the submission.
 
 ### 2.2 URLs and repository
 
-- [ ] `[REPO_URL]` is public, or you will add it in editing after 2026-11-01.
+- [ ] `https://github.com/Lesnak1/tabwrit` is public, or you will add it in editing after 2026-11-01.
 - [ ] `[HOSTED_DEMO_URL]` is live and returns the app.
 - [ ] The repository has `JUDGE.md`, `REPRODUCE.md`, and the evidence files.
 - [ ] Do not show a dead URL in the final export. A 404 is worse than no URL.
@@ -369,13 +369,13 @@ TabWrit
 Every Tab has a Writ.
 
 Built at NEAR HACKATHON 2026
-[REPO_URL]
+https://github.com/Lesnak1/tabwrit
 [HOSTED_DEMO_URL]
 
 Testnet only. 1Click is a quote, not a settlement.
 ```
 
-Do not export with `[REPO_URL]` or `[HOSTED_DEMO_URL]` placeholders. Replace them with live URLs, or add them in editing after the repository is public.
+Do not export with `https://github.com/Lesnak1/tabwrit` or `[HOSTED_DEMO_URL]` placeholders. Replace them with live URLs, or add them in editing after the repository is public.
 
 **English VO:**
 > TabWrit. Every Tab has a Writ. Built at NEAR HACKATHON 2026. The repository
@@ -454,9 +454,9 @@ on NEAR. A prompt injection hits the contract, not the wallet.
 Testnet only. 1Click is a live mainnet quote, not a settlement. No mainnet
 settlement was executed.
 
-Repo: [REPO_URL]
+Repo: https://github.com/Lesnak1/tabwrit
 Hosted demo: [HOSTED_DEMO_URL]
-Judge quickstart: [REPO_URL]/blob/main/JUDGE.md
+Judge quickstart: https://github.com/Lesnak1/tabwrit/blob/main/JUDGE.md
 
 Evidence: 23/23 Attack Lab, 12/12 NEP-366, 4/4 prompt-injection,
 13/13 x402 agent API, 3/3 web gasless, 5/5 relayer gas meter.
@@ -574,7 +574,7 @@ seconds; do not risk a failed upload on submission day.
 - [ ] First 10 seconds are the attack rejection, not a logo.
 - [ ] Every claim has a visible transaction or test output.
 - [ ] 1Click is labeled quote-only.
-- [ ] Close shows live `[REPO_URL]` and `[HOSTED_DEMO_URL]`.
+- [ ] Close shows live `https://github.com/Lesnak1/tabwrit` and `[HOSTED_DEMO_URL]`.
 - [ ] Full video is 2:45-2:50; teaser is 60-90 seconds.
 - [ ] X post is public, says "Built at NEAR HACKATHON", and attaches the teaser.
 - [ ] Submission `demoUrl` is the X post URL.

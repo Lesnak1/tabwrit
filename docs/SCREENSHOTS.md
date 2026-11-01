@@ -104,8 +104,8 @@ First reply:
 
 ```text
 Live testnet demo: [HOSTED_DEMO_URL]
-Repo: [REPO_URL]
-Judge quickstart: [REPO_URL]/blob/main/JUDGE.md
+Repo: https://github.com/Lesnak1/tabwrit
+Judge quickstart: https://github.com/Lesnak1/tabwrit/blob/main/JUDGE.md
 
 Four screenshots below: Attack Lab 23/23, x402 13/13, gasless receipt,
 and the vault with 0 access keys.
