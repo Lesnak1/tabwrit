@@ -1,0 +1,59 @@
+# Render Blueprint for the TabWrit testnet keeper.
+#
+# Free plan notes (Render, 2026):
+#   - 750 instance hours per workspace per month.
+#   - Free web services spin down after 15 minutes without traffic.
+#   - The filesystem is ephemeral; relay-usage.json resets on restart.
+#   - Keep one service awake with an external /health ping if needed.
+#
+# Secrets are marked sync: false and are entered in the Render dashboard.
+# Never put private keys in this file.
+services:
+  - type: web
+    name: tabwrit-keeper
+    runtime: node
+    plan: free
+    region: frankfurt
+    branch: main
+    healthCheckPath: /health
+    buildCommand: npm install -g pnpm@11.9.0 && pnpm install --frozen-lockfile && pnpm --filter keeper build
+    startCommand: node services/keeper/dist/server.js
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: NEAR_NETWORK
+        value: testnet
+      - key: NEAR_RPC_URL
+        value: https://test.rpc.fastnear.com
+      - key: TAB_VAULT_CONTRACT_ID
+        value: tab-vault.testnet
+      - key: TAB_TOKEN_ID
+        value: tab-usdc.testnet
+      - key: MERCHANT_ACCOUNT_ID
+        value: tab-merchant.testnet
+      - key: MERCHANT_CHARGE_PRIVATE_KEY
+        sync: false
+      - key: KEEPER_API_KEY
+        generateValue: true
+      - key: TAB_WEBHOOK_SECRET
+        generateValue: true
+      - key: RELAYER_ACCOUNT_ID
+        value: tab-relayer.testnet
+      - key: RELAYER_PRIVATE_KEY
+        sync: false
+      - key: RELAYER_API_KEY
+        sync: false
+      - key: RELAYER_MAX_GAS
+        value: "100000000000000"
+      - key: RELAYER_MAX_BLOCK_WINDOW
+        value: "200"
+      - key: RELAYER_RATE_LIMIT
+        value: "10"
+      - key: RELAYER_USAGE_FILE
+        value: ./relay-usage.json
+      - key: KEEPER_CORS_ORIGIN
+        value: http://localhost:3005
+      - key: ONECLICK_API_URL
+        value: https://1click.chaindefuser.com
+      - key: ONECLICK_REFUND_ACCOUNT
+        value: near.near

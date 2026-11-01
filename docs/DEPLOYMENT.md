@@ -194,6 +194,38 @@ For a hosted testnet keeper, run the compiled service with
 `node services/keeper/dist/server.js` after `pnpm --filter keeper build`. Set
 `KEEPER_CORS_ORIGIN` to the Vercel URL and let the host provide `PORT`.
 
+### Render free keeper (recommended)
+
+Render's Hobby workspace is free and includes 750 instance hours per month,
+512 MB RAM and a Node runtime. A free web service spins down after 15 minutes
+without traffic and wakes on the next request (about one minute). The
+filesystem is ephemeral, so `relay-usage.json` resets on restart; that is
+acceptable for the demo. See https://render.com/docs/free (checked 2026-11-01).
+
+The repository contains [`render.yaml`](../render.yaml). In the Render
+dashboard:
+
+1. **New -> Blueprint**.
+2. Connect `https://github.com/Lesnak1/tabwrit` and select the `render.yaml`.
+3. Apply the Blueprint. Render creates `tabwrit-keeper` on the **free** plan.
+4. Fill the `sync: false` values from the local `.env`:
+   `MERCHANT_CHARGE_PRIVATE_KEY`, `RELAYER_PRIVATE_KEY`, `RELAYER_API_KEY`.
+   The generated `KEEPER_API_KEY` and `TAB_WEBHOOK_SECRET` stay in Render.
+5. Wait for the build and open the `onrender.com` URL.
+6. Test `https://<keeper>.onrender.com/health` and an authenticated
+   `/relay/status`.
+7. After Vercel is live, set `KEEPER_CORS_ORIGIN` to the Vercel URL and
+   redeploy/restart the keeper.
+
+Free-tier caveats:
+
+- 750 instance hours are enough for one service at ~720-744 hours/month; do not
+  add a second free service that must stay awake.
+- A keep-alive ping every 10 minutes to `/health` (for example UptimeRobot)
+  keeps the service warm and stays within one service's hours.
+- Free services are for demos, not production; do not use them for real funds.
+- `RELAYER_PRIVATE_KEY` must exist only on Render, never in the web app.
+
 Security:
 
 - `/charge` requires `Authorization: Bearer <KEEPER_API_KEY>`.

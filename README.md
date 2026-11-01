@@ -802,6 +802,8 @@ docs/
   DEMO_TR.md            Turkish voiceover companion (production aid)
   SCREENSHOTS.md        60-90s clip + four-screenshot X post plan
   evidence/             real testnet transaction reports
+render.yaml             free Render keeper blueprint
+vercel.json             Vercel web build settings
 JUDGE.md                one-page judge quickstart
 REPRODUCE.md            fresh-clone and full-testnet reproduction
 ```

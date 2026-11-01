@@ -44,6 +44,7 @@ const requiredFiles = [
   'LICENSE',
   'package.json',
   'pnpm-lock.yaml',
+  'render.yaml',
   'vercel.json',
   '.env.example',
   'apps/web/.env.example',
@@ -140,6 +141,16 @@ if (exists('vercel.json')) {
     }
   } catch (err) {
     failures.push(`vercel.json is not valid JSON: ${err.message}`);
+  }
+}
+
+if (exists('render.yaml')) {
+  const render = read('render.yaml');
+  if (!render.includes('plan: free')) {
+    warnings.push('render.yaml does not set plan: free');
+  }
+  if (!render.includes('startCommand: node services/keeper/dist/server.js')) {
+    warnings.push('render.yaml start command is not the compiled keeper');
   }
 }
 
