@@ -28,6 +28,11 @@ rejects the output directory because of the Next.js preset, remove
 `outputDirectory` from `vercel.json` and let the preset find `.next`; keep the
 build command.
 
+The root `package.json` intentionally lists `next` at the same version as
+`apps/web`. Vercel's root-directory Next.js detector requires it; the actual
+web build still runs from `apps/web`. The root also pins
+`packageManager: pnpm@11.9.0` so Vercel and Render use the same pnpm version.
+
 Environment variables:
 
 ```text

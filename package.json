@@ -4,6 +4,7 @@
   "private": true,
   "description": "TabWrit — contract-enforced spending Tabs for merchants and AI agents on NEAR",
   "license": "MIT",
+  "packageManager": "pnpm@11.9.0",
   "scripts": {
     "build:contract": "node scripts/build-contracts.mjs",
     "test": "node scripts/run-rust-tests.mjs",
@@ -35,6 +36,7 @@
     "@wasm-opt/wasm": "^2.0.1",
     "dotenv": "^16.4.5",
     "near-api-js": "^4.0.0",
+    "next": "14.2.35",
     "tsx": "^4.7.2",
     "typescript": "^5.4.5",
     "wasm-opt": "^2.0.1"
