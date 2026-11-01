@@ -45,6 +45,18 @@ type Evidence = {
 
 const data = evidence as Evidence;
 const metaTx = metaTxEvidence as any;
+
+// Format evidence timestamps in UTC on both the server and the client so the
+// rendered text hydrates without a locale/timezone mismatch.
+const utcDateTime = new Intl.DateTimeFormat('en-GB', {
+  dateStyle: 'medium',
+  timeStyle: 'short',
+  timeZone: 'UTC',
+});
+const utcDate = new Intl.DateTimeFormat('en-GB', {
+  dateStyle: 'medium',
+  timeZone: 'UTC',
+});
 const webGasless = webGaslessEvidence as any;
 const agentAttack = agentAttackEvidence as any;
 const agentX402 = agentX402Evidence as any;
@@ -101,7 +113,7 @@ export default function AttackLabPage() {
             {passed}/{data.results.length} passed
           </span>
           <div className="form-hint" style={{ marginTop: '0.35rem' }}>
-            Last run {new Date(data.generatedAt).toLocaleString()}
+            Last run {utcDateTime.format(new Date(data.generatedAt))} UTC
           </div>
         </div>
       </div>
@@ -231,7 +243,7 @@ export default function AttackLabPage() {
             Agent, gasless and x402 evidence
           </h2>
           <span className="form-hint">
-            Run {new Date(metaTx.generatedAt).toLocaleDateString()} · real
+            Run {utcDate.format(new Date(metaTx.generatedAt))} · real
             testnet transactions
           </span>
         </div>
