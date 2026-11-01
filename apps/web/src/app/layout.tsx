@@ -1,4 +1,3 @@
-import '@hot-labs/near-connect/modal-ui.css';
 import './globals.css';
 import Link from 'next/link';
 import React from 'react';

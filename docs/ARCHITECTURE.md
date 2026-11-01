@@ -316,7 +316,7 @@ app/app/page.tsx      vault: connect, faucet, deposit, create, pause/revoke, wit
 app/merchant/page.tsx merchant checkout + live 1Click quote preview
 app/lab/page.tsx      committed 23/23 + gasless + agent + x402 evidence
 app/docs/page.tsx     architecture, API, security, limitations
-lib/wallet.tsx        HOT Labs WalletSelector/UI; wallet-signed calls
+lib/wallet.tsx        HOT Labs NearConnector; wallet-signed calls
 lib/rpc.ts            read-only RPC views and formatting
 lib/config.ts         NEXT_PUBLIC_* configuration
 lib/server-near.ts    server-only merchant charge with scoped key

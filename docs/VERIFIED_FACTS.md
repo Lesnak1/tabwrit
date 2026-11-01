@@ -101,8 +101,20 @@ checked is marked **UNVERIFIED** and is not used as a product claim.
 
 ## 8. Wallet connector
 
-- **Source:** installed `@hot-labs/near-connect` 0.2.15 typings and README.
-- **API:** `WalletSelector` + `WalletSelectorUI`; `network: "testnet" | "mainnet"`.
+- **Source:** installed `@hot-labs/near-connect` 0.12.0 typings, README and
+  bundled sandbox code, checked 2026-11-01.
+- **API:** `NearConnector`; `network: "testnet" | "mainnet"`. The older
+  `WalletSelector` / `WalletSelectorUI` classes are gone in 0.12.
+- **Why 0.12 is required:** Meteor's live executor reads
+  `window.selector.nearConnectVersion` and calls
+  `window.selector.external("meteorCom", ...)`. The 0.2.15 sandbox exposed
+  neither, so the extension was never detected. 0.12.0 exposes both; a local
+  Playwright run with a stand-in extension bridge showed the Meteor
+  **Chrome Extension** option.
+- **Picker flow:** `connector.connect()` opens the picker, signs in with the
+  selected wallet, and emits `wallet:signIn` with
+  `{ wallet, accounts, success, source }`; the styles are injected by the
+  library, so no `modal-ui.css` import is used.
 - `wallet.signAndSendTransaction({ receiverId, actions })` accepts actions in
   the connector's shape:
   `{ type: "FunctionCall", params: { methodName, args, gas: string, deposit: string } }`.

@@ -38,7 +38,6 @@ const GAS_100_TGAS = '100000000000000';
 
 export function WalletProvider({ children }: { children: React.ReactNode }) {
   const selectorRef = useRef<any>(null);
-  const uiRef = useRef<any>(null);
   const walletRef = useRef<any>(null);
   const initPromiseRef = useRef<Promise<any> | null>(null);
   const connectTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -54,15 +53,21 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
 
     initPromiseRef.current = (async () => {
       const mod: any = await import('@hot-labs/near-connect');
-      const selector = new mod.WalletSelector({ network: NETWORK });
-      const ui = new mod.WalletSelectorUI(selector);
+      const selector = new mod.NearConnector({
+        network: NETWORK,
+        autoConnect: false,
+        footerBranding: null,
+      });
       selectorRef.current = selector;
-      uiRef.current = ui;
 
       selector.on('wallet:signIn', (payload: any) => {
         if (!payload?.success) {
           setError('Wallet sign-in was rejected.');
           setConnecting(false);
+          if (connectTimerRef.current) {
+            clearTimeout(connectTimerRef.current);
+            connectTimerRef.current = null;
+          }
           return;
         }
         const first = payload.accounts?.[0];
@@ -123,27 +128,32 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     setError(null);
     setConnecting(true);
     if (connectTimerRef.current) clearTimeout(connectTimerRef.current);
-    connectTimerRef.current = setTimeout(() => setConnecting(false), 20000);
+    connectTimerRef.current = setTimeout(() => {
+      connectTimerRef.current = null;
+      setConnecting(false);
+    }, 180000);
     try {
       await init();
-      if (!uiRef.current) throw new Error('Wallet connector is not ready.');
-      // Give the remote wallet manifest a short window to load. If it is
-      // slow, open the modal anyway; the UI updates when it arrives.
       const selector = selectorRef.current;
-      if (selector?.whenManifestLoaded) {
-        await Promise.race([
-          selector.whenManifestLoaded,
-          new Promise((resolve) => setTimeout(resolve, 6000)),
-        ]).catch(() => {});
-      }
-      uiRef.current.open();
+      if (!selector) throw new Error('Wallet connector is not ready.');
+      // connect() opens the wallet picker and signs in with the selected
+      // wallet. The wallet:signIn event updates the account state.
+      await selector.connect();
     } catch (err: any) {
+      const message =
+        typeof err === 'string'
+          ? err
+          : err?.message || 'Could not connect the wallet.';
+      // Closing the picker is a normal cancellation, not an error.
+      if (!/user rejected|wallet closed|closed/i.test(message)) {
+        setError(message);
+      }
+    } finally {
       setConnecting(false);
       if (connectTimerRef.current) {
         clearTimeout(connectTimerRef.current);
         connectTimerRef.current = null;
       }
-      setError(err?.message || 'Could not open the wallet selector.');
     }
   }, [init]);
 
