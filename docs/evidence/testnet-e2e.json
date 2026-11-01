@@ -1,0 +1,191 @@
+{
+  "network": "testnet",
+  "vault": "tab-vault.testnet",
+  "token": "tab-usdc.testnet",
+  "demo": "tab-demo.testnet",
+  "merchant": "tab-merchant.testnet",
+  "generatedAt": "2026-10-24T22:57:17.475Z",
+  "depositTx": "1N7Xwhi6unNCS8YRNzGb1arSUHp1EW2qWsJYGY14Fgq",
+  "results": [
+    {
+      "id": "D0",
+      "scenario": "Deposit tUSDC into the vault via ft_transfer_call",
+      "expected": "100000000 ledger",
+      "actual": "100000000 ledger",
+      "tx": "1N7Xwhi6unNCS8YRNzGb1arSUHp1EW2qWsJYGY14Fgq",
+      "pass": true
+    },
+    {
+      "id": "S1",
+      "scenario": "Legitimate charge inside every cap",
+      "expected": "executed",
+      "actual": "executed",
+      "tx": "E2BnPa2fbWjk4fXstVoBP2LZCfoNEMhsz45udwwYGp9N",
+      "pass": true
+    },
+    {
+      "id": "S2",
+      "scenario": "Prompt-injection charge above per-charge cap",
+      "expected": "PER_CHARGE_CAP",
+      "actual": "PER_CHARGE_CAP",
+      "tx": "9LJTMXodbwM96e4uFt8TyxtN2vH8tPsEFYzD6J4Hrku3",
+      "pass": true
+    },
+    {
+      "id": "S3",
+      "scenario": "Second legitimate charge inside period budget",
+      "expected": "executed",
+      "actual": "executed",
+      "tx": "GvmLUqURMLJ8tuc4YjSLYT7hHGuAhRVFCKYt2vDhGvmK",
+      "pass": true
+    },
+    {
+      "id": "S3b",
+      "scenario": "Period budget exhaustion",
+      "expected": "PERIOD_CAP",
+      "actual": "PERIOD_CAP",
+      "tx": "BCCXHCPV7vnWvVqzvwSYa396btCLLBP6zhFHXJqhPU8v",
+      "pass": true
+    },
+    {
+      "id": "S4",
+      "scenario": "Phishing charge to an unapproved receiver",
+      "expected": "RECEIVER_NOT_ALLOWED",
+      "actual": "RECEIVER_NOT_ALLOWED",
+      "tx": "38ctn7BxqZ89mUdH9juUWuQV1G9XEvvjKUDx4oHaaznB",
+      "pass": true
+    },
+    {
+      "id": "S5",
+      "scenario": "Charge while the owner has paused the Tab",
+      "expected": "TAB_NOT_ACTIVE",
+      "actual": "TAB_NOT_ACTIVE",
+      "tx": "Dnqk7jwQTDhn8gsRvGeNWKoofiRNQsoLUKDYXNFKrzfj",
+      "pass": true
+    },
+    {
+      "id": "S7",
+      "scenario": "Unauthorized account calls charge",
+      "expected": "ERR_CALLER_NOT_SPENDER",
+      "actual": "ERR_CALLER_NOT_SPENDER",
+      "tx": "HKcc2zWr8RSjWRNEzLWXedf9X5JDyvtgv2kWQPDPyNqw",
+      "pass": true
+    },
+    {
+      "id": "S9a",
+      "scenario": "Rollover Tab: first charge in period 0",
+      "expected": "executed",
+      "actual": "executed",
+      "tx": "5AotsQrC9Df5RaP7dt43teehr2mXtAkBRVLvvuMpw4jv",
+      "pass": true
+    },
+    {
+      "id": "S9b",
+      "scenario": "Rollover Tab: period 0 budget exhausted",
+      "expected": "PERIOD_CAP",
+      "actual": "PERIOD_CAP",
+      "tx": "3KqECmPmvqnJ42NM4FnrHhK9Mmd1Kfp1Dpd4iFp3VALH",
+      "pass": true
+    },
+    {
+      "id": "S9c",
+      "scenario": "Rollover Tab: charge succeeds in the new period",
+      "expected": "executed",
+      "actual": "executed",
+      "tx": "6wCNDFcCphRHxQywvQ8KUs4cVL9D2WpPeChQEiCbcJeA",
+      "pass": true
+    },
+    {
+      "id": "S8",
+      "scenario": "Charge larger than the vault ledger balance",
+      "expected": "INSUFFICIENT_BALANCE",
+      "actual": "INSUFFICIENT_BALANCE",
+      "tx": "9yqC5BazjpLgAE5svHBopttk38Gt18gdr8Uq7UaeaJog",
+      "pass": true
+    },
+    {
+      "id": "S10a",
+      "scenario": "NEP-141 transfer to an unregistered account fails",
+      "expected": "failed",
+      "actual": "failed: FT_TRANSFER_PROMISE_FAILED",
+      "tx": "3kXkt43oN56EUZn9bSZj9sHkwA4AKkxhZT1HBKUCXKWZ",
+      "pass": true
+    },
+    {
+      "id": "S10b",
+      "scenario": "Callback restores ledger and cap counters",
+      "expected": "ledger 60000000, spent 0, nonce 0",
+      "actual": "ledger 60000000, spent 0, nonce 0",
+      "pass": true
+    },
+    {
+      "id": "S11a",
+      "scenario": "Replay Tab: first charge consumes nonce 0",
+      "expected": "executed",
+      "actual": "executed",
+      "tx": "EcCFXGgwcvtwztV9uNxx1UgRZVt42ZCdRujA9aU6DyrG",
+      "pass": true
+    },
+    {
+      "id": "S11b",
+      "scenario": "Replay the already-consumed nonce",
+      "expected": "ERR_NONCE_MISMATCH",
+      "actual": "ERR_NONCE_MISMATCH",
+      "tx": "CMEQqBoq2RF9GxFDJsUXaztx6gqNfk8ABzzfs8V1x1s4",
+      "pass": true
+    },
+    {
+      "id": "S12",
+      "scenario": "Charge after the on-chain expiry timestamp",
+      "expected": "TAB_EXPIRED",
+      "actual": "TAB_EXPIRED",
+      "tx": "4EiewNFxJKAPRXjL1jicG8eW59j9MmZXa416Kse2z6ws",
+      "pass": true
+    },
+    {
+      "id": "S13a",
+      "scenario": "Charge before revocation",
+      "expected": "executed",
+      "actual": "executed",
+      "tx": "HkoAt6nRyVcQdeV3PujjzhsUGVFBQBZxZEKFrFUY7Rmh",
+      "pass": true
+    },
+    {
+      "id": "S13b",
+      "scenario": "Charge after permanent revocation",
+      "expected": "TAB_NOT_ACTIVE",
+      "actual": "TAB_NOT_ACTIVE",
+      "tx": "GazzFcuvhr4moDYW1RVd9ED29Bx7PeQA9HdESCSrqYzB",
+      "pass": true
+    },
+    {
+      "id": "S14",
+      "scenario": "Owner withdraws from the vault",
+      "expected": "+10000000 wallet, -10000000 ledger",
+      "actual": "+10000000 wallet, -10000000 ledger",
+      "tx": "EBG1SGFu5oEJaGXmpPikeHoqdMqvmhmUH2jXFFssV6Dm",
+      "pass": true
+    },
+    {
+      "id": "F1",
+      "scenario": "Merchant received exactly the executed charges",
+      "expected": "60000000 delta",
+      "actual": "60000000 delta",
+      "pass": true
+    },
+    {
+      "id": "F2",
+      "scenario": "Contract stats count only confirmed settlements (delta)",
+      "expected": "charges=6, volume=60000000",
+      "actual": "charges=6, volume=60000000",
+      "pass": true
+    },
+    {
+      "id": "F3",
+      "scenario": "Vault ledger conservation",
+      "expected": "30000000",
+      "actual": "30000000",
+      "pass": true
+    }
+  ]
+}

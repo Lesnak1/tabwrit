@@ -1,0 +1,60 @@
+{
+  "network": "testnet",
+  "generatedAt": "2026-10-31T20:45:24.699Z",
+  "keeper": "http://localhost:4000",
+  "merchant": "tab-merchant.testnet",
+  "agent": "tab-agent.testnet",
+  "totals": {
+    "relays": 7,
+    "tokensBurntYocto": "499507427742929200000000",
+    "senders": 2
+  },
+  "senders": [
+    {
+      "senderId": "tab-agent.testnet",
+      "relays": 4,
+      "tokensBurntYocto": "301396141049638800000000",
+      "lastTxHash": "DXLU9StQLHFcCq74CXNYwPVncTQiyTDMGgHNcnpLnjGx",
+      "lastAt": "2026-10-26T01:15:53.238Z"
+    },
+    {
+      "senderId": "tab-merchant.testnet",
+      "relays": 3,
+      "tokensBurntYocto": "198111286693290400000000",
+      "lastTxHash": "5qd5UoMBezmW9ti5WFrME7pVKGZ51SwegZfE1kNnQReQ",
+      "lastAt": "2026-10-26T01:16:49.718Z"
+    }
+  ],
+  "results": [
+    {
+      "id": "U1",
+      "name": "Usage endpoint rejects missing API key",
+      "pass": true,
+      "detail": "401"
+    },
+    {
+      "id": "U2",
+      "name": "Usage endpoint accepts the relayer key",
+      "pass": true,
+      "detail": "200 totals={\"relays\":7,\"tokensBurntYocto\":\"499507427742929200000000\",\"senders\":2}"
+    },
+    {
+      "id": "U3",
+      "name": "Merchant relays are metered with non-zero gas",
+      "pass": true,
+      "detail": "relays=3 gas=198111286693290400000000"
+    },
+    {
+      "id": "U4",
+      "name": "Agent relays are metered with non-zero gas",
+      "pass": true,
+      "detail": "relays=4 gas=301396141049638800000000"
+    },
+    {
+      "id": "U5",
+      "name": "Total metered gas is positive",
+      "pass": true,
+      "detail": "relays=7 gas=499507427742929200000000 senders=2"
+    }
+  ]
+}

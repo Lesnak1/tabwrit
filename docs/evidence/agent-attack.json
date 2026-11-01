@@ -1,0 +1,43 @@
+{
+  "network": "testnet",
+  "vault": "tab-vault.testnet",
+  "token": "tab-usdc.testnet",
+  "owner": "hardjava737.testnet",
+  "agent": "tab-agent.testnet",
+  "merchant": "tab-merchant.testnet",
+  "attacker": "tab-attacker.testnet",
+  "tabId": 71,
+  "generatedAt": "2026-10-26T01:16:07.370Z",
+  "attackTx": "7huWe3A9d54rEKfQGVucRMLNkdKXWAYGGEnapYLpQxLR",
+  "legitTx": "5p5KxLPdvRWPkDmn8vjjWH9kuLtfzRr4F5nnbtdYendN",
+  "results": [
+    {
+      "id": "A1",
+      "name": "Contract rejects the redirected charge",
+      "pass": true,
+      "detail": "REJECTED reason=RECEIVER_NOT_ALLOWED",
+      "tx": "7huWe3A9d54rEKfQGVucRMLNkdKXWAYGGEnapYLpQxLR"
+    },
+    {
+      "id": "A2",
+      "name": "No funds moved and the Tab nonce was not consumed",
+      "pass": true,
+      "detail": "attacker 0->0 spent=0 nonce=0",
+      "tx": "7huWe3A9d54rEKfQGVucRMLNkdKXWAYGGEnapYLpQxLR"
+    },
+    {
+      "id": "A3",
+      "name": "Allowlisted merchant charge executes",
+      "pass": true,
+      "detail": "EXECUTED reason=none",
+      "tx": "5p5KxLPdvRWPkDmn8vjjWH9kuLtfzRr4F5nnbtdYendN"
+    },
+    {
+      "id": "A4",
+      "name": "Only the legitimate 1 tUSDC charge is counted",
+      "pass": true,
+      "detail": "spent=1000000 count=1 nonce=1 merchant 543500000->544500000",
+      "tx": "5p5KxLPdvRWPkDmn8vjjWH9kuLtfzRr4F5nnbtdYendN"
+    }
+  ]
+}

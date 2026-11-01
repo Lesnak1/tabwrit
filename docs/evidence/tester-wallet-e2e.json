@@ -1,0 +1,93 @@
+{
+  "network": "testnet",
+  "owner": "hardjava737.testnet",
+  "vault": "tab-vault.testnet",
+  "token": "tab-usdc.testnet",
+  "merchant": "tab-merchant.testnet",
+  "generatedAt": "2026-10-24T22:58:14.368Z",
+  "results": [
+    {
+      "id": "W0",
+      "name": "Fresh wallet has testnet NEAR",
+      "pass": true,
+      "detail": "11 NEAR"
+    },
+    {
+      "id": "W1",
+      "name": "Public faucet registers and mints tUSDC",
+      "pass": true,
+      "detail": "160000000 atomic tUSDC",
+      "tx": "5npS4avZNK4qarakPhAeyMDi2WeFD9YcoN4aJLzq5yHf"
+    },
+    {
+      "id": "W2",
+      "name": "NEP-141 deposit credits the owner ledger",
+      "pass": true,
+      "detail": "50000000 atomic ledger",
+      "tx": "4MqM5RUEqzYRQAceQmGkMEjEiCffa1tGEBydK8QucEZk"
+    },
+    {
+      "id": "W3",
+      "name": "create_tab stores the owner rule on-chain",
+      "pass": true,
+      "detail": "Tab #43 owner=hardjava737.testnet spender=tab-merchant.testnet",
+      "tx": "HisoZXCZEyDG6scBdJDZWDvMyW6hYZGXfwZ1QPBUDzav"
+    },
+    {
+      "id": "W4",
+      "name": "Owner pauses the Tab",
+      "pass": true,
+      "detail": "Paused",
+      "tx": "9PuwCRdX7UrwMzh8kFpBiPceYFzVXptXKPRuvKMMcrV"
+    },
+    {
+      "id": "W5",
+      "name": "Owner resumes the Tab",
+      "pass": true,
+      "detail": "Active",
+      "tx": "66jbrdHFTwyK1rNXFBYTQERPYRGbaxZ3CUXmEo94KKYb"
+    },
+    {
+      "id": "W6",
+      "name": "Paused Tab rejects merchant charge",
+      "pass": true,
+      "detail": "TAB_NOT_ACTIVE",
+      "tx": "7VR6wU8S1iqGquAPo4CZzMwTyUhqRh6Fcg8LxQYgmYVE"
+    },
+    {
+      "id": "W7",
+      "name": "Over per-charge-cap charge rejected",
+      "pass": true,
+      "detail": "PER_CHARGE_CAP",
+      "tx": "9ddxTw1t6W8AE32QbrYCoXFNAPPteChFRXAEUmYzUcPd"
+    },
+    {
+      "id": "W8",
+      "name": "Legitimate merchant charge settles",
+      "pass": true,
+      "detail": "spent=10000000 nonce=1 vault 50000000->40000000 merchant 485000000->495000000",
+      "tx": "HSdC1WREAkHf3A1RAZUf7vctsjGdLBPPhWn3PG8ocJmL"
+    },
+    {
+      "id": "W9",
+      "name": "Consumed nonce cannot be replayed",
+      "pass": true,
+      "detail": "{\"index\":0,\"kind\":{\"index\":0,\"kind\":{\"FunctionCallError\":{\"ExecutionError\":\"Smar",
+      "tx": "HCJyUhJEH9tq5Wm1NkD3DD6MzPCChvhNRfEpLLd7nh3n"
+    },
+    {
+      "id": "W10",
+      "name": "Revoked Tab is terminal and rejects charge",
+      "pass": true,
+      "detail": "Revoked / TAB_NOT_ACTIVE",
+      "tx": "ECCkmuXWqtM2ssepQfyDZ3EivBoMgqxeF4DvcXX9s9w"
+    },
+    {
+      "id": "W11",
+      "name": "Owner withdraws unspent funds",
+      "pass": true,
+      "detail": "vault 40000000->30000000 wallet 127000000->137000000",
+      "tx": "mTHe1PC87ws19ErWPJgciD4mK9cuBQfPZqiVzJExHiZ"
+    }
+  ]
+}

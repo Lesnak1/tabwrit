@@ -1,0 +1,36 @@
+# Environment & secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+~/.near-credentials
+.near-credentials/
+
+# Dependencies & Build artifacts
+node_modules/
+target/
+dist/
+.next/
+out/
+build/
+*.wasm
+*.tsbuildinfo
+.vercel/
+receipts.json
+relay-usage.json
+*.log
+
+# Internal build/agent notes (kept locally, not part of the public submission)
+AGENTS.md
+MASTER_PROMPT.md
+HACKATHON.md
+docs/PROGRESS.md
+docs/SUBMISSION_DRAFT.md
+docs/RELEASE_CHECKLIST.md
+
+# IDE & OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

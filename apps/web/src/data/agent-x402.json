@@ -1,0 +1,114 @@
+{
+  "generated_at": "2026-10-26T01:17:17.244Z",
+  "network": "testnet",
+  "vault": "tab-vault.testnet",
+  "token": "tab-usdc.testnet",
+  "owner": "tab-demo.testnet",
+  "agent": "tab-agent.testnet",
+  "payee": "tab-merchant.testnet",
+  "attacker": "tab-attacker.testnet",
+  "tab_id": 73,
+  "scheme": "tabwrit",
+  "note": "x402-style HTTP 402 flow with TabWrit invoices; not a full x402 protocol implementation",
+  "results": [
+    {
+      "id": "X1",
+      "name": "Unpaid request returns a real 402 TabWrit challenge",
+      "pass": true,
+      "detail": "status=402 invoice=2e969ad3... payTo=tab-merchant.testnet"
+    },
+    {
+      "id": "X2a",
+      "name": "MCP tab_pay_and_fetch returns PAID and the live report",
+      "pass": true,
+      "detail": "status=PAID report=TabWrit premium NEAR testnet report",
+      "tx": "AnuVqhJkEBhtTshDhs5Vk3WUjxjxMCH62BmJZwj8tPpX"
+    },
+    {
+      "id": "X2b",
+      "name": "On-chain Tab counters and tUSDC movement match the invoice",
+      "pass": true,
+      "detail": "merchant 554500000 -> 555000000; vault 26500000 -> 26000000; nonce=1",
+      "tx": "AnuVqhJkEBhtTshDhs5Vk3WUjxjxMCH62BmJZwj8tPpX"
+    },
+    {
+      "id": "X3",
+      "name": "A used receipt is rejected with RECEIPT_REPLAY on a fresh invoice",
+      "pass": true,
+      "detail": "status=409 code=RECEIPT_REPLAY"
+    },
+    {
+      "id": "X4",
+      "name": "A consumed invoice is rejected with INVOICE_ALREADY_PAID",
+      "pass": true,
+      "detail": "status=409 code=INVOICE_ALREADY_PAID"
+    },
+    {
+      "id": "X5",
+      "name": "A receipt presented by a different payer is rejected",
+      "pass": true,
+      "detail": "status=402 code=WRONG_PAYER"
+    },
+    {
+      "id": "X6",
+      "name": "A receipt for a different amount is rejected",
+      "pass": true,
+      "detail": "status=402 code=WRONG_AMOUNT"
+    },
+    {
+      "id": "X7a",
+      "name": "Agent client refuses a prompt-injected receiver before spending gas",
+      "pass": true,
+      "detail": "status=REFUSED reason=RECEIVER_NOT_ALLOWED"
+    },
+    {
+      "id": "X7b",
+      "name": "Contract rejects the same redirect with RECEIVER_NOT_ALLOWED",
+      "pass": true,
+      "detail": "reason=RECEIVER_NOT_ALLOWED attacker=0",
+      "tx": "EegUMwMK65nRbJK9xtn1PnsoDuRWPX7JSXwLxGrpCit"
+    },
+    {
+      "id": "X8a",
+      "name": "Agent client refuses an invoice above the per-charge cap",
+      "pass": true,
+      "detail": "status=REFUSED reason=PER_CHARGE_CAP"
+    },
+    {
+      "id": "X8b",
+      "name": "Contract rejects the same over-cap charge with PER_CHARGE_CAP",
+      "pass": true,
+      "detail": "reason=PER_CHARGE_CAP merchant=555000000",
+      "tx": "97KDicdXbprPRrs8X6p3pt4KV18kMV5QKmp5YEms8vYi"
+    },
+    {
+      "id": "X9a",
+      "name": "Agent client refuses a revoked Tab before spending gas",
+      "pass": true,
+      "detail": "status=REFUSED reason=TAB_NOT_ACTIVE",
+      "tx": "GWdZVJRdAwJUtmgCystzj3oXHYTP1KkzmR2LKVwb2Aaf"
+    },
+    {
+      "id": "X9b",
+      "name": "Contract rejects a revoked Tab with TAB_NOT_ACTIVE",
+      "pass": true,
+      "detail": "reason=TAB_NOT_ACTIVE merchant=555000000",
+      "tx": "HFVjsWszXZuN5hVWePGWf2MRKwLbCPgzM4zrmBKG8Ece"
+    }
+  ],
+  "passed": 13,
+  "total": 13,
+  "transactions": {
+    "success": "AnuVqhJkEBhtTshDhs5Vk3WUjxjxMCH62BmJZwj8tPpX",
+    "attacker_rejected": "EegUMwMK65nRbJK9xtn1PnsoDuRWPX7JSXwLxGrpCit",
+    "over_cap_rejected": "97KDicdXbprPRrs8X6p3pt4KV18kMV5QKmp5YEms8vYi",
+    "revoked_rejected": "HFVjsWszXZuN5hVWePGWf2MRKwLbCPgzM4zrmBKG8Ece",
+    "revoke": "GWdZVJRdAwJUtmgCystzj3oXHYTP1KkzmR2LKVwb2Aaf"
+  },
+  "explorer": {
+    "success": "https://testnet.nearblocks.io/txns/AnuVqhJkEBhtTshDhs5Vk3WUjxjxMCH62BmJZwj8tPpX",
+    "attacker_rejected": "https://testnet.nearblocks.io/txns/EegUMwMK65nRbJK9xtn1PnsoDuRWPX7JSXwLxGrpCit",
+    "over_cap_rejected": "https://testnet.nearblocks.io/txns/97KDicdXbprPRrs8X6p3pt4KV18kMV5QKmp5YEms8vYi",
+    "revoked_rejected": "https://testnet.nearblocks.io/txns/HFVjsWszXZuN5hVWePGWf2MRKwLbCPgzM4zrmBKG8Ece"
+  }
+}

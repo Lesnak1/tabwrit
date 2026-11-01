@@ -1,0 +1,21 @@
+{
+  "name": "@tab-protocol/sdk",
+  "version": "0.1.0",
+  "description": "TabWrit merchant SDK: HMAC webhook verification and NEP-366 gasless charge helpers on NEAR",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@near-js/transactions": "1.2.3",
+    "@noble/hashes": "1.3.3",
+    "near-api-js": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.5"
+  }
+}

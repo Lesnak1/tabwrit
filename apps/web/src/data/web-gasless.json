@@ -1,0 +1,34 @@
+{
+  "network": "testnet",
+  "vault": "tab-vault.testnet",
+  "token": "tab-usdc.testnet",
+  "owner": "hardjava737.testnet",
+  "merchant": "tab-merchant.testnet",
+  "tabId": 72,
+  "generatedAt": "2026-10-26T01:16:50.114Z",
+  "relayTx": "5qd5UoMBezmW9ti5WFrME7pVKGZ51SwegZfE1kNnQReQ",
+  "relayer": "tab-relayer.testnet",
+  "gasless": true,
+  "results": [
+    {
+      "id": "G1",
+      "name": "Web route returns a gasless executed receipt",
+      "pass": true,
+      "detail": "200 status=executed relayer=tab-relayer.testnet",
+      "tx": "5qd5UoMBezmW9ti5WFrME7pVKGZ51SwegZfE1kNnQReQ"
+    },
+    {
+      "id": "G2",
+      "name": "Contract recorded exactly one 10 tUSDC charge",
+      "pass": true,
+      "detail": "spent=10000000 count=1 merchant 544500000->554500000",
+      "tx": "5qd5UoMBezmW9ti5WFrME7pVKGZ51SwegZfE1kNnQReQ"
+    },
+    {
+      "id": "G3",
+      "name": "Merchant NEAR balance unchanged (relayer paid gas)",
+      "pass": true,
+      "detail": "9971145852558168200000000 -> 9971145852558168200000000"
+    }
+  ]
+}

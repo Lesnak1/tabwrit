@@ -1,0 +1,19 @@
+This AI agent was told to pay an attacker. The contract said no. No funds moved, and the agent's nonce was not consumed.
+
+TabWrit gives merchants and AI agents a capped, expiring, revocable spending Tab. A prompt injection hits the contract, not your wallet.
+
+The owner funds a vault once. Every owner action is signed in their own wallet. The server never holds the owner key.
+
+For each merchant or agent, the owner opens a Tab: a per-charge cap, a period budget, a lifetime cap, an expiry, and a receiver policy. The spender gets a Function-Call key scoped to charge. It cannot withdraw, pause, revoke, or change the rule.
+
+The customer does not sign again. The merchant's scoped key signs a NEP-366 delegate off-chain, and the relayer pays the gas. The merchant's NEAR balance stays unchanged. The contract still enforces the caps and consumes the nonce.
+
+These are not simulated results. Twenty-three adversarial checks are real testnet transactions. The final vault has zero access keys. There is no deployer backdoor.
+
+An unpaid API request returns a real HTTP 402 invoice. The MCP tool pays it from the agent's Tab. The API returns data only after verifying the vault's charge-executed event. Replay, wrong payer, over-cap, a redirected receiver, and a revoked Tab are all rejected. Thirteen out of thirteen.
+
+This is a live 1Click mainnet quote: ten USDC on Base, the required input, and the fee buffer. It is a quote, not a settlement. The testnet demo stops here.
+
+Twelve gasless checks: the merchant and the agent both charge without paying NEAR gas. The relayer pays; both balances stay unchanged. Replay, a tampered signature, and a FullAccess-key delegate are refused. The keeper meters actual gas per sender for prepaid credits.
+
+TabWrit. Every Tab has a Writ. Built at NEAR HACKATHON 2026. The repository and the live testnet demo are below. Testnet only. 1Click is a quote, not a settlement.

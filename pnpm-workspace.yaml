@@ -1,0 +1,7 @@
+packages:
+  - 'services/*'
+  - 'apps/*'
+  - 'packages/*'
+allowBuilds:
+  esbuild: true
+  secp256k1: true

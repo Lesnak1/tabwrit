@@ -1,0 +1,46 @@
+{
+  "name": "tab-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "TabWrit — contract-enforced spending Tabs for merchants and AI agents on NEAR",
+  "license": "MIT",
+  "scripts": {
+    "build:contract": "node scripts/build-contracts.mjs",
+    "test": "node scripts/run-rust-tests.mjs",
+    "test:rust": "node scripts/run-rust-tests.mjs",
+    "demo": "tsx scripts/print-evidence.ts",
+    "demo:sandbox": "tsx scripts/print-evidence.ts",
+    "dev:web": "pnpm --filter web dev",
+    "build:web": "pnpm --filter web build",
+    "dev:keeper": "pnpm --filter keeper dev",
+    "build:keeper": "pnpm --filter keeper build",
+    "testnet:setup": "tsx scripts/create-testnet-accounts.ts && tsx scripts/deploy-testnet.ts && tsx scripts/setup-spender-key.ts merchant && tsx scripts/setup-spender-key.ts agent",
+    "testnet:fund": "tsx scripts/send-testnet-near.ts",
+    "testnet:inspect": "tsx scripts/inspect-testnet.ts",
+    "testnet:e2e": "tsx scripts/testnet-e2e.ts",
+    "test:tester": "tsx scripts/tester-wallet-e2e.ts",
+    "test:meta": "tsx scripts/test-meta-tx.ts",
+    "test:relayer-usage": "tsx scripts/test-relayer-usage.ts",
+    "test:web-gasless": "tsx scripts/test-web-gasless.ts",
+    "test:agent-attack": "tsx scripts/test-agent-attack.ts",
+    "test:x402": "pnpm --filter @tab-protocol/mcp build && tsx scripts/test-agent-x402.ts",
+    "test:mcp": "pnpm --filter @tab-protocol/mcp build && tsx packages/tab-mcp/test-mcp.ts",
+    "test:mcp:charge": "pnpm --filter @tab-protocol/mcp build && tsx packages/tab-mcp/test-mcp-charge.ts",
+    "test:keeper": "tsx scripts/test-keeper.ts",
+    "test:sdk": "tsx packages/tab-sdk/test-sdk.ts",
+    "build:sdk": "pnpm --filter @tab-protocol/sdk build",
+    "release:preflight": "tsx scripts/preflight-release.mjs"
+  },
+  "devDependencies": {
+    "@wasm-opt/wasm": "^2.0.1",
+    "dotenv": "^16.4.5",
+    "near-api-js": "^4.0.0",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.5",
+    "wasm-opt": "^2.0.1"
+  },
+  "dependencies": {
+    "@near-js/transactions": "1.2.3",
+    "@noble/hashes": "1.3.3"
+  }
+}

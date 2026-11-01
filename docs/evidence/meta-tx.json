@@ -1,0 +1,116 @@
+{
+  "network": "testnet",
+  "vault": "tab-vault.testnet",
+  "token": "tab-usdc.testnet",
+  "owner": "hardjava737.testnet",
+  "merchant": "tab-merchant.testnet",
+  "agent": "tab-agent.testnet",
+  "relayer": "tab-relayer.testnet",
+  "tabId": 69,
+  "agentTabId": 70,
+  "merchantPublicKey": "ed25519:GmMiPdTTnEHD4ogxaci9gzDgrVHLtiDhxq6r8vcdkvf8",
+  "merchantKeyPermission": {
+    "FunctionCall": {
+      "allowance": "4971563773504713300000000",
+      "method_names": [
+        "charge"
+      ],
+      "receiver_id": "tab-vault.testnet"
+    }
+  },
+  "agentPublicKey": "ed25519:CTQqDP3t6EY1zUzWx2KKLXyX5c2QPb4pJG82CUBenTUZ",
+  "agentKeyPermission": {
+    "FunctionCall": {
+      "allowance": "4989595360026094000000000",
+      "method_names": [
+        "charge"
+      ],
+      "receiver_id": "tab-vault.testnet"
+    }
+  },
+  "generatedAt": "2026-10-26T01:15:53.436Z",
+  "delegateHash": "0145fcd4652e2fa43d1e2f622974ffbcc3793b7d62258f863472eccab39d746d",
+  "relayTx": "Ad4NUGC4ssyZQNK6NkJeHiVrVgRwei99TuE6fs9yVCif",
+  "explorer": "https://testnet.nearblocks.io/txns/Ad4NUGC4ssyZQNK6NkJeHiVrVgRwei99TuE6fs9yVCif",
+  "agentRelayTx": "AEd8YeVkpXWv6FAN1qDt42zF8DxH88fckr1D6GNVctEs",
+  "agentAttackTx": "DXLU9StQLHFcCq74CXNYwPVncTQiyTDMGgHNcnpLnjGx",
+  "results": [
+    {
+      "id": "M1",
+      "name": "Merchant delegate key is a scoped Function-Call key",
+      "pass": true,
+      "detail": "ed25519:GmMiPdTTnE… receiver=tab-vault.testnet"
+    },
+    {
+      "id": "M2",
+      "name": "Relayer submitted the delegate",
+      "pass": true,
+      "detail": "executed relayer=tab-relayer.testnet",
+      "tx": "Ad4NUGC4ssyZQNK6NkJeHiVrVgRwei99TuE6fs9yVCif"
+    },
+    {
+      "id": "M3",
+      "name": "Charge executed and token moved exactly once",
+      "pass": true,
+      "detail": "spent=1000000 count=1 merchant 541500000->542500000 ledger 7000000->6000000",
+      "tx": "Ad4NUGC4ssyZQNK6NkJeHiVrVgRwei99TuE6fs9yVCif"
+    },
+    {
+      "id": "M4",
+      "name": "Merchant NEAR balance unchanged",
+      "pass": true,
+      "detail": "9971145852558168200000000 -> 9971145852558168200000000"
+    },
+    {
+      "id": "M5",
+      "name": "Relayer paid the gas",
+      "pass": true,
+      "detail": "9986582003706053600000000 -> 9887884056380698200000000 (98697947325355400000000 yocto)"
+    },
+    {
+      "id": "M6",
+      "name": "Outer transaction signer is the relayer",
+      "pass": true,
+      "detail": "signer=tab-relayer.testnet receiver=tab-merchant.testnet",
+      "tx": "Ad4NUGC4ssyZQNK6NkJeHiVrVgRwei99TuE6fs9yVCif"
+    },
+    {
+      "id": "M7",
+      "name": "Replayed delegate is rejected",
+      "pass": true,
+      "detail": "DELEGATE_NONCE_INVALID: Delegate nonce 274558226000092 must be greater than the access-key nonce 2745582"
+    },
+    {
+      "id": "M8",
+      "name": "Tampered signature is rejected",
+      "pass": true,
+      "detail": "INVALID_SIGNATURE: The delegate signature does not match the sender key."
+    },
+    {
+      "id": "M9",
+      "name": "FullAccess key is refused by the relayer",
+      "pass": true,
+      "detail": "KEY_NOT_SCOPED: The delegate key must be a Function-Call key scoped to <vault>::charge."
+    },
+    {
+      "id": "M10",
+      "name": "Agent signs a gasless charge; relayer executes it",
+      "pass": true,
+      "detail": "scoped=true status=executed spent=1000000",
+      "tx": "AEd8YeVkpXWv6FAN1qDt42zF8DxH88fckr1D6GNVctEs"
+    },
+    {
+      "id": "M11",
+      "name": "Agent NEAR balance unchanged; relayer paid gas",
+      "pass": true,
+      "detail": "9989361722132772600000000 -> 9989361722132772600000000"
+    },
+    {
+      "id": "M12",
+      "name": "Prompt-injected agent redirect is rejected on-chain",
+      "pass": true,
+      "detail": "status=rejected reason=RECEIVER_NOT_ALLOWED attacker=0 nonce=1",
+      "tx": "DXLU9StQLHFcCq74CXNYwPVncTQiyTDMGgHNcnpLnjGx"
+    }
+  ]
+}
