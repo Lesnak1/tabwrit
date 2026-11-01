@@ -183,6 +183,11 @@ checked is marked **UNVERIFIED** and is not used as a product claim.
   https://testnet.nearblocks.io/txns/97KDicdXbprPRrs8X6p3pt4KV18kMV5QKmp5YEms8vYi;
   revoked Tab rejected:
   https://testnet.nearblocks.io/txns/HFVjsWszXZuN5hVWePGWf2MRKwLbCPgzM4zrmBKG8Ece).
+- **Hosted demo:** https://tabwrit.vercel.app (Vercel) with the keeper at
+  https://tabwrit-keeper.onrender.com. A hosted gasless smoke charge executed
+  Tab #74 (10 tUSDC, relayer-paid gas):
+  https://testnet.nearblocks.io/txns/H51eYJrW948N7ksiTVykTvcpPUTRFBc97yBNc5er4NGF
+  (evidence: `docs/evidence/hosted-smoke.json`, checked 2026-11-01).
 - **Old compromised account retired:** the superseded `731d…` account now
   has 0 access keys:
   https://testnet.nearblocks.io/txns/7TTrJmMVpRwbNkuKLh3BjoV7dHGnihhC3PfxNk3raYCt

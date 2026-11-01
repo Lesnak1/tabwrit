@@ -7,7 +7,9 @@ pause, revoke or attach a deposit. **A prompt injection hits the contract, not
 the wallet.**
 
 **Tracks:** `security` (primary), `agents`, `realworld`.  
-**Naming:** TabWrit is the project; a Tab is the on-chain spending primitive.
+**Naming:** TabWrit is the project; a Tab is the on-chain spending primitive.  
+**Live demo:** https://tabwrit.vercel.app  
+**Hosted keeper:** https://tabwrit-keeper.onrender.com/health
 
 ---
 

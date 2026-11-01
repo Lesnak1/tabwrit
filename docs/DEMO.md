@@ -45,7 +45,7 @@ not delay the submission.
 
 ### 2.1 Hosted demo and keeper
 
-- [ ] The web app is live on a **public URL**, not `localhost`. Replace `[HOSTED_DEMO_URL]` in this script only after it is live.
+- [ ] The web app is live on a **public URL**, not `localhost`. Replace `https://tabwrit.vercel.app` in this script only after it is live.
 - [ ] The keeper is live if the video shows the gasless toggle. If the keeper is down, hide the gasless toggle and do not claim gasless.
 - [ ] The app is tested in incognito and on a 390px mobile viewport.
 - [ ] The server holds only the merchant's scoped key; no owner key is on the server.
@@ -53,7 +53,7 @@ not delay the submission.
 ### 2.2 URLs and repository
 
 - [ ] `https://github.com/Lesnak1/tabwrit` is public, or you will add it in editing after 2026-11-01.
-- [ ] `[HOSTED_DEMO_URL]` is live and returns the app.
+- [ ] `https://tabwrit.vercel.app` is live and returns the app.
 - [ ] The repository has `JUDGE.md`, `REPRODUCE.md`, and the evidence files.
 - [ ] Do not show a dead URL in the final export. A 404 is worse than no URL.
 
@@ -370,12 +370,14 @@ Every Tab has a Writ.
 
 Built at NEAR HACKATHON 2026
 https://github.com/Lesnak1/tabwrit
-[HOSTED_DEMO_URL]
+https://tabwrit.vercel.app
 
 Testnet only. 1Click is a quote, not a settlement.
 ```
 
-Do not export with the `[HOSTED_DEMO_URL]` placeholder. Replace it with the live Vercel URL, or add it in editing after the hosted demo is live. The repository URL is already filled.
+Do not export with a dead URL. The hosted demo is live at
+`https://tabwrit.vercel.app` and the repository is live at
+`https://github.com/Lesnak1/tabwrit`; show both in the close.
 
 **English VO:**
 > TabWrit. Every Tab has a Writ. Built at NEAR HACKATHON 2026. The repository
@@ -455,7 +457,7 @@ Testnet only. 1Click is a live mainnet quote, not a settlement. No mainnet
 settlement was executed.
 
 Repo: https://github.com/Lesnak1/tabwrit
-Hosted demo: [HOSTED_DEMO_URL]
+Hosted demo: https://tabwrit.vercel.app
 Judge quickstart: https://github.com/Lesnak1/tabwrit/blob/main/JUDGE.md
 
 Evidence: 23/23 Attack Lab, 12/12 NEP-366, 4/4 prompt-injection,
@@ -574,7 +576,7 @@ seconds; do not risk a failed upload on submission day.
 - [ ] First 10 seconds are the attack rejection, not a logo.
 - [ ] Every claim has a visible transaction or test output.
 - [ ] 1Click is labeled quote-only.
-- [ ] Close shows live `https://github.com/Lesnak1/tabwrit` and `[HOSTED_DEMO_URL]`.
+- [ ] Close shows live `https://github.com/Lesnak1/tabwrit` and `https://tabwrit.vercel.app`.
 - [ ] Full video is 2:45-2:50; teaser is 60-90 seconds.
 - [ ] X post is public, says "Built at NEAR HACKATHON", and attaches the teaser.
 - [ ] Submission `demoUrl` is the X post URL.

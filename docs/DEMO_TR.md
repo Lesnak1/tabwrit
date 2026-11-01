@@ -128,7 +128,7 @@
 > canlı testnet demo aşağıda. Sadece testnet. 1Click bir quote, settlement
 > değil.
 
-**Not:** Repo URL hazır: `https://github.com/Lesnak1/tabwrit`. `[HOSTED_DEMO_URL]` yer tutucusunu canlı Vercel URL'siyle değiştirmeden videoyu export etme; URL yoksa kapanışı sonra kaydet veya edit'te ekle.
+**Not:** Repo URL hazır: `https://github.com/Lesnak1/tabwrit`. `https://tabwrit.vercel.app` yer tutucusunu canlı Vercel URL'siyle değiştirmeden videoyu export etme; URL yoksa kapanışı sonra kaydet veya edit'te ekle.
 
 ---
 

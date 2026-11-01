@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-11-01T02:23:46.355Z",
+  "network": "testnet",
+  "web": "https://tabwrit.vercel.app",
+  "keeper": "https://tabwrit-keeper.onrender.com",
+  "route": "/api/merchant/charge-gasless",
+  "tab_id": 74,
+  "owner": "hardjava737.testnet",
+  "spender": "tab-merchant.testnet",
+  "amount": "10000000",
+  "gasless": true,
+  "relayer": "tab-relayer.testnet",
+  "gas_paid_by": "relayer",
+  "event": "charge_executed",
+  "tx_hash": "H51eYJrW948N7ksiTVykTvcpPUTRFBc97yBNc5er4NGF",
+  "explorer": "https://testnet.nearblocks.io/txns/H51eYJrW948N7ksiTVykTvcpPUTRFBc97yBNc5er4NGF",
+  "note": "Real hosted smoke charge: Vercel web -> Render keeper -> NEP-366 relayer."
+}

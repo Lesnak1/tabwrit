@@ -103,7 +103,7 @@ Testnet demo + repo in the reply.
 First reply:
 
 ```text
-Live testnet demo: [HOSTED_DEMO_URL]
+Live testnet demo: https://tabwrit.vercel.app
 Repo: https://github.com/Lesnak1/tabwrit
 Judge quickstart: https://github.com/Lesnak1/tabwrit/blob/main/JUDGE.md
 

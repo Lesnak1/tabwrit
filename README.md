@@ -19,6 +19,8 @@ primitive; a **Writ** is the rule attached to it. The public name can change
 without renaming the deployed contracts, accounts or evidence. See
 [`docs/NAMING.md`](docs/NAMING.md).
 
+**Live testnet demo:** https://tabwrit.vercel.app
+
 This repository is built for **NEAR Hackathon 2026** (tracks: `security`,
 `agents`, `realworld`). The testnet deployment, the Rust tests, the 23-check
 Attack Lab, the 12-check gasless suite, the 4-check prompt-injection suite and
@@ -163,6 +165,8 @@ On the **testnet demo** the merchant path stops at the NEAR token transfer
 | Agent / spender | `tab-agent.testnet` | [NearBlocks](https://testnet.nearblocks.io/address/tab-agent.testnet) |
 | NEP-366 relayer (gas only) | `tab-relayer.testnet` | [NearBlocks](https://testnet.nearblocks.io/address/tab-relayer.testnet) |
 | RPC | `https://test.rpc.fastnear.com` | — |
+| Hosted web demo | https://tabwrit.vercel.app | [Open](https://tabwrit.vercel.app) |
+| Hosted keeper | https://tabwrit-keeper.onrender.com | [Health](https://tabwrit-keeper.onrender.com/health) |
 
 `tab-usdc.testnet` is a **test token**. It has no monetary value. It has a
 public `faucet()` that mints 100 tUSDC to the caller so a judge can try the
@@ -195,6 +199,9 @@ Selected receipts (full list in the evidence file):
 | `M12` | The agent's prompt-injected redirect is rejected on-chain | [Dbagm7mB…](https://testnet.nearblocks.io/txns/Dbagm7mBDcTYrDA9L4g271XBDMDig2q6fJedkfjik2zx) |
 | `G1` | The browser gasless checkout route settles a 10 tUSDC invoice | [GsZpgNCA…](https://testnet.nearblocks.io/txns/GsZpgNCASb3ojcuhV8nguiuyv3YAFgcC473UrBFLunjC) |
 | `A1` | A prompt-injected charge to an attacker is rejected on-chain | [2wKAwrNv…](https://testnet.nearblocks.io/txns/2wKAwrNvPRbWtZREobK6xZxB6iEyYhhaKVMLNgQB9fkx) |
+| `H1` | Hosted Vercel + Render keeper settle a real gasless charge | [H51eYJrW…](https://testnet.nearblocks.io/txns/H51eYJrW948N7ksiTVykTvcpPUTRFBc97yBNc5er4NGF) |
+
+Hosted smoke report: [`docs/evidence/hosted-smoke.json`](docs/evidence/hosted-smoke.json).
 
 The deployed contract was built from this repository's `contracts/tab-vault`
 source with `near-sdk 5.29.1`. The deployer's only full-access key was removed
