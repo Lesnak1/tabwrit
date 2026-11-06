@@ -55,8 +55,10 @@ services:
         value: "10"
       - key: RELAYER_USAGE_FILE
         value: ./relay-usage.json
+      # Hosted web origin. Local development overrides this in
+      # services/keeper/.env; the live service uses the Vercel origin.
       - key: KEEPER_CORS_ORIGIN
-        value: http://localhost:3005
+        value: https://tabwrit.vercel.app
       - key: ONECLICK_API_URL
         value: https://1click.chaindefuser.com
       - key: ONECLICK_REFUND_ACCOUNT
