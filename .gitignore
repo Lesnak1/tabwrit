@@ -29,6 +29,14 @@ docs/PROGRESS.md
 docs/SUBMISSION_DRAFT.md
 docs/RELEASE_CHECKLIST.md
 
+# Local demo production files (kept locally, not part of the public submission)
+/video-input/
+/docs/DEMO.md
+/docs/DEMO_TR.md
+/docs/DEMO_VO_EN.txt
+/docs/DEMO_VO_EN_TTS.txt
+/docs/SCREENSHOTS.md
+
 # IDE & OS files
 .DS_Store
 Thumbs.db
