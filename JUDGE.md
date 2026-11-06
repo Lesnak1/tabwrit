@@ -8,6 +8,7 @@ the wallet.**
 
 **Tracks:** `security` (primary), `agents`, `realworld`.  
 **Naming:** TabWrit is the project; a Tab is the on-chain spending primitive.  
+**Demo video (75s, captioned):** https://x.com/LesnaCrex/status/2118706276091974069  
 **Live demo:** https://tabwrit.vercel.app  
 **Hosted keeper:** https://tabwrit-keeper.onrender.com/health
 
@@ -53,7 +54,9 @@ Reports:
 
 ---
 
-## Fresh-clone commands that work without the author's keys
+## No-key quickstart (start here)
+
+These commands work without `.env`, a wallet, or the author's keys:
 
 ```bash
 pnpm install
@@ -63,24 +66,40 @@ pnpm --filter web build   # production Next.js build
 pnpm test:mcp             # 6 MCP tools, live testnet read views
 ```
 
-Full testnet reproduction needs funded testnet accounts and keys. Use
-`REPRODUCE.md`; do not reuse the author's live account names.
+No wallet is needed for the hosted evidence:
+
+- **Watch:** the 75s captioned demo:
+  https://x.com/LesnaCrex/status/2118706276091974069
+- **Open:** https://tabwrit.vercel.app/lab — the 23/23 Attack Lab and the
+  gasless, agent and x402 cards.
+- **Open:** https://tabwrit.vercel.app/merchant — the invoice and live
+  quote-only 1Click preview work without a wallet.
+
+The manual wallet flow is optional. If you use it, get testnet NEAR from
+https://near-faucet.io/ or https://dev.near.org/faucet, then use the in-app
+**Get 100 test tUSDC** faucet. The author-only `pnpm testnet:fund` helper
+needs the demo account key and is not required.
+
+If the hosted gasless relayer is cold, uncheck **Gasless** on `/merchant`;
+the direct merchant charge still settles without the keeper. The video,
+`/lab` and `pnpm demo` never depend on the keeper.
 
 ---
 
-## 3-minute path
+## Full reproduction (requires funded testnet keys)
 
-1. **Prompt injection:** `pnpm test:agent-attack` → the attacker charge is
-   rejected on-chain; the legitimate merchant charge executes.
-2. **Gasless:** `pnpm test:meta` → merchant and agent pay without NEAR gas;
-   replay/tampered/FullAccess delegates are refused.
-3. **x402 agent API:** `pnpm test:x402` → the agent pays a real HTTP 402
-   invoice; the API verifies the on-chain receipt; replay, wrong payer,
-   over-cap, redirect and revoked Tab are rejected.
-4. **Product:** open `/app`, fund the vault, create a Tab; `/merchant` pays
-   the invoice and links to the transaction.
-5. **Evidence:** `/lab` shows the 23/23 Attack Lab and the gasless, agent and
-   x402 cards.
+These scripts submit real testnet transactions and need funded testnet
+accounts/keys in `.env`. They are not part of the no-key path. Use
+`REPRODUCE.md`; do not reuse the author's live account names.
+
+```bash
+pnpm test:agent-attack   # 4/4 prompt-injection containment
+pnpm test:meta           # 12/12 NEP-366 gasless checks
+pnpm test:x402           # 13/13 x402-style agent API checks
+```
+
+The committed results and transaction links are in `docs/evidence/` and are
+printed by `pnpm demo` without keys.
 
 ---
 

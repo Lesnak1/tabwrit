@@ -19,7 +19,8 @@ primitive; a **Writ** is the rule attached to it. The public name can change
 without renaming the deployed contracts, accounts or evidence. See
 [`docs/NAMING.md`](docs/NAMING.md).
 
-**Live testnet demo:** https://tabwrit.vercel.app
+**Live testnet demo:** https://tabwrit.vercel.app  
+**Demo video (75s, captioned):** https://x.com/LesnaCrex/status/2118706276091974069
 
 This repository is built for **NEAR Hackathon 2026** (tracks: `security`,
 `agents`, `realworld`). The testnet deployment, the Rust tests, the 23-check
@@ -234,6 +235,12 @@ scheme, not a full x402 protocol implementation.
 For a one-page path, start with [`JUDGE.md`](JUDGE.md). For a fresh clone or a
 full testnet deployment, see [`REPRODUCE.md`](REPRODUCE.md).
 
+**No keys or wallet? Start here.** Watch the 75s demo
+(https://x.com/LesnaCrex/status/2118706276091974069), open
+https://tabwrit.vercel.app/lab, then run `pnpm test`, `pnpm demo` and
+`pnpm test:mcp`. These need no `.env` and no author keys. The manual wallet
+flow below is optional; steps 6-8 need funded testnet keys.
+
 ### Prerequisites
 
 - Node.js 20+ and `pnpm` 9+
@@ -328,10 +335,11 @@ then the app at `http://localhost:3005`.
 
 Open `/app`:
 
-1. Connect a NEAR testnet wallet through the HOT Labs connector (HOT Wallet,
-   Meteor, MyNearWallet, Ledger, etc.). If the wallet needs testnet NEAR for
-   gas, send it from the demo account:
-   `pnpm testnet:fund <your-account.testnet> 2`.
+1. Connect a NEAR testnet wallet through the HOT Labs connector (Meteor,
+   Intear, Nightly, Ledger, etc.). If the wallet needs testnet NEAR for gas,
+   use the public faucet at https://near-faucet.io/ or
+   https://dev.near.org/faucet. The author-only `pnpm testnet:fund` helper
+   needs the demo account key and is not required for judges.
 2. If the wallet has 0 tUSDC, click **Get 100 test tUSDC**. This is a real
    `faucet()` call on the test token.
 3. Deposit tUSDC with **Deposit** (a real `ft_transfer_call`).
@@ -346,6 +354,10 @@ Open `/merchant`:
 2. Click **Pay 10 tUSDC**. The merchant's server-side Function-Call key calls
    `charge`; the customer does not sign this step.
 3. A real NearBlocks transaction and `charge_executed` event are displayed.
+
+If the hosted gasless relayer is cold, uncheck **Gasless**; the direct
+merchant charge route still settles the invoice without the keeper. The
+Attack Lab, video and `pnpm demo` never depend on the keeper.
 
 The merchant charge key is intentionally server-side and not committed. In
 the hosted demo it is set as `MERCHANT_CHARGE_PRIVATE_KEY`; locally, copy
@@ -391,7 +403,11 @@ pnpm test:mcp:charge
 The agent can only charge a Tab that names it as the spender. It cannot
 create or revoke Tabs; those remain owner wallet actions.
 
-### 6. Verify the NEP-366 gasless charge
+### 6. Verify the NEP-366 gasless charge (requires funded testnet keys)
+
+Steps 6-8 submit real testnet transactions and need the author's funded
+testnet accounts/keys in `.env`. Judges without keys should use `pnpm demo`
+and `/lab` instead; the committed evidence contains the same transactions.
 
 **Do X:** start the keeper, then run the direct and web gasless flows:
 ```bash
@@ -422,7 +438,7 @@ pnpm test:web-gasless
 - Relayer transaction:
   [J78NCm2F…](https://testnet.nearblocks.io/txns/J78NCm2FpxzyUcNm3gBz1egBbfMH8J3QKosaqA2ithrS).
 
-### 7. Reproduce the prompt-injection containment
+### 7. Reproduce the prompt-injection containment (requires funded testnet keys)
 
 **Do X:**
 ```bash
@@ -439,7 +455,7 @@ prints **4/4** and writes
 Rejected transaction:
 [2wKAwrNv…](https://testnet.nearblocks.io/txns/2wKAwrNvPRbWtZREobK6xZxB6iEyYhhaKVMLNgQB9fkx).
 
-### 8. Run the x402-style agent API
+### 8. Run the x402-style agent API (requires funded testnet keys)
 
 **Do X:**
 ```bash
