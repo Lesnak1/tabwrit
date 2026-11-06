@@ -361,11 +361,11 @@ export default function LandingPage() {
               <div className="feature-icon">
                 <Globe2 size={21} />
               </div>
-              <h3>Pay in the payee&apos;s chain</h3>
+              <h3>Preview the payee&apos;s chain</h3>
               <p>
-                A merchant can quote an invoice in USDC on Base, Arbitrum or
-                Solana. The vault sends the quoted input to a 1Click deposit
-                address; NEAR Intents solvers deliver the output asset.
+                A merchant can request a live 1Click quote for USDC on Base,
+                Arbitrum or Solana. On testnet this is quote-only; no mainnet
+                funds move.
               </p>
             </div>
           </div>
@@ -403,9 +403,9 @@ export default function LandingPage() {
               <h3>Let the payee charge</h3>
               <p>
                 The merchant or agent calls <code>charge</code> with a
-                monotonic nonce. The contract validates the rule, moves only
-                the allowed amount, and settles the rest on the destination
-                chain through 1Click.
+                monotonic nonce. The contract validates the rule and moves
+                only the allowed amount. A cross-chain payout can be quoted
+                through 1Click; executing it requires a funded mainnet vault.
               </p>
             </div>
           </div>
