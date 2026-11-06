@@ -31,8 +31,7 @@ explicitly below.
 
 The hackathon requires a **working prototype** in a public repository and a
 public demo post. A mainnet settlement is *not* a requirement; it is optional
-future work. The only mainnet item in the submission is the prize payout
-address, which the human creates.
+future work.
 
 ### Why this is different
 
@@ -200,6 +199,7 @@ Selected receipts (full list in the evidence file):
 | `G1` | The browser gasless checkout route settles a 10 tUSDC invoice | [GsZpgNCA…](https://testnet.nearblocks.io/txns/GsZpgNCASb3ojcuhV8nguiuyv3YAFgcC473UrBFLunjC) |
 | `A1` | A prompt-injected charge to an attacker is rejected on-chain | [2wKAwrNv…](https://testnet.nearblocks.io/txns/2wKAwrNvPRbWtZREobK6xZxB6iEyYhhaKVMLNgQB9fkx) |
 | `H1` | Hosted Vercel + Render keeper settle a real gasless charge | [H51eYJrW…](https://testnet.nearblocks.io/txns/H51eYJrW948N7ksiTVykTvcpPUTRFBc97yBNc5er4NGF) |
+| `H2` | Live hosted demo settles a 10 tUSDC gasless charge on Tab #77 | [FGZYsopN…](https://testnet.nearblocks.io/txns/FGZYsopNGBBLy9v4xzki3DD6pDDbGfPgmfC2segpoH6z) |
 
 Hosted smoke report: [`docs/evidence/hosted-smoke.json`](docs/evidence/hosted-smoke.json).
 
@@ -270,8 +270,7 @@ test fuzz_tests::fuzz::test_fuzz_conservation_of_funds_under_arbitrary_stress ..
 test result: ok. 16 passed; 0 failed
 ```
 
-This is the actual Rust contract, not a TypeScript model. The old repository
-shipped a TS "reference model" as the main test; it has been removed.
+This runs the actual Rust contract in a NEAR VM, not a mocked model.
 
 ### 2. Print the last verified testnet Attack Lab
 
@@ -803,11 +802,6 @@ docs/
   NAMING.md             TabWrit name, brand hierarchy and availability notes
   SUSTAINABILITY.md     revenue model + measured relayer gas
   VERIFIED_FACTS.md     live docs and API facts with dates
-  DEMO.md               2:50 final shooting script (optional)
-  DEMO_VO_EN.txt        clean English voiceover text (recording)
-  DEMO_VO_EN_TTS.txt    TTS-friendly English voiceover text (ElevenLabs)
-  DEMO_TR.md            Turkish voiceover companion (production aid)
-  SCREENSHOTS.md        60-90s clip + four-screenshot X post plan
   evidence/             real testnet transaction reports
 render.yaml             free Render keeper blueprint
 vercel.json             Vercel web build settings
@@ -865,27 +859,6 @@ name or import the key. The full fresh-clone and fresh-testnet steps are in
 [`REPRODUCE.md`](REPRODUCE.md).
 
 ---
-
-## Submission status
-
-- [x] Contract implemented and tested (16 Rust tests)
-- [x] Real testnet deployment + 23/23 on-chain evidence
-- [x] Web app: wallet-signed owner flow, merchant charge, live quote preview
-- [x] MCP server (6 tools, live agent charge, x402 paid fetch) and webhook verifier
-- [x] Fresh-wallet 12/12 and browser UI 10/10 E2E verification
-- [x] NEP-366 gasless charge (12/12 + web 3/3) and prompt-injection containment (4/4)
-- [x] x402-style agent API (13/13): paid fetch, replay, wrong payer/amount, caps, redirect, revoke
-- [x] Relayer gas meter (5/5) and a contract-compatible sustainability model
-- [x] README/docs describe only implemented and tested behavior
-- [ ] Human records a 60-90 second captioned demo, captures four screenshots,
-      and publishes the X post with `@NEARProtocol` and `#NEARHackathon`
-- [ ] Human makes the repository public (after 2026-11-01T00:00:00Z)
-- [ ] Human provides the submission payload fields and confirms the submission
-
-The human confirms the exact submission payload against the live
-[`HACKATHON.md`](https://nearhackathon.com/HACKATHON.md) before submitting. No
-submission, push, mainnet deploy or token spend is performed by an agent
-without the human's explicit confirmation.
 
 ## License
 

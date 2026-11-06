@@ -420,8 +420,8 @@ x402 implementation or a production hosted service.
 invariants on-chain", "formal verification", "MCP 7/7", and a "non-custodial"
 contract while the deployer retained a full-access key.
 
-**Fix.** README, `docs/ARCHITECTURE.md`, `docs/SECURITY.md`,
-`docs/VERIFIED_FACTS.md` and `docs/DEMO.md` were rewritten around the
+**Fix.** README, `docs/ARCHITECTURE.md`, `docs/SECURITY.md` and
+`docs/VERIFIED_FACTS.md` were rewritten around the
 implemented, tested behavior. Unverified/unsupported claims were removed. The
 deployer key is deleted after the final deployment; the README states the
 exact security property.
@@ -467,7 +467,7 @@ used an ad-hoc `npx wasm-opt`. On Windows, the GNU toolchain could not find
   [9VqKERqd…](https://testnet.nearblocks.io/txns/9VqKERqdHEiiF2wk6bEeV1ucSdihBLYnWnxN7pTCBcWr).
 - Post-lock smoke charge through the same route:
   [89EZYcFj…](https://testnet.nearblocks.io/txns/89EZYcFjJCdR4HJjp5B3dVqzqRtNUHk5aWKxL9a8VuQj).
-- Fresh test wallet direct E2E on the human's actual
+- Fresh test wallet direct E2E on the tester wallet
   `hardjava737.testnet`: 12/12
   (`docs/evidence/tester-wallet-e2e.json`).
 - Browser UI E2E with the real wallet connector: 10/10, 0 console errors

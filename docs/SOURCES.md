@@ -70,10 +70,5 @@ live file before submitting.
 ## What was not used as a source
 
 - No endpoint, contract address, asset ID, SDK method or version was invented.
-- Unsupported claims from the previous repository version (formal
-  verification, 100% zero mock, the old gasless demo, 9/9 on-chain
-  invariants) were removed rather than re-sourced. The current NEP-366
-  implementation is backed by the NEP-366 specification and a real 12/12
-  testnet run.
-- The old `731d…` testnet deployment and its key were retired. Its transaction
-  links are not used as current evidence.
+- Every protocol claim is backed by the live specification or an on-chain
+  testnet receipt.

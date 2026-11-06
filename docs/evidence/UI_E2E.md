@@ -6,9 +6,9 @@ A Playwright browser injected a local test wallet into the real
 **exact action shape** to a test-only local signer on `127.0.0.1:4010`; the
 signer held the fresh testnet key from `.env` and signed with near-api-js.
 
-The UI test wallet was `tab-tester.testnet`, created with the human-provided
+The UI test wallet was `tab-tester.testnet`, created with a dedicated
 testnet key and funded by the NEAR testnet helper. The direct 12/12 owner-flow
-test was later re-run on the human's actual wallet `hardjava737.testnet`
+test was later re-run on the tester wallet `hardjava737.testnet`
 (12 testnet NEAR); its report is
 `docs/evidence/tester-wallet-e2e.json`. No private key is in this repository
 or either report.

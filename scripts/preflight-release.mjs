@@ -49,11 +49,6 @@ const requiredFiles = [
   '.env.example',
   'apps/web/.env.example',
   'services/keeper/.env.example',
-  'docs/DEMO.md',
-  'docs/DEMO_VO_EN.txt',
-  'docs/DEMO_VO_EN_TTS.txt',
-  'docs/DEMO_TR.md',
-  'docs/SCREENSHOTS.md',
   'docs/evidence/testnet-e2e.json',
   'docs/evidence/meta-tx.json',
   'docs/evidence/agent-attack.json',
@@ -190,15 +185,6 @@ function walk(dir) {
 
 walk(root);
 
-for (const rel of ['docs/DEMO.md', 'docs/SCREENSHOTS.md']) {
-  if (exists(rel)) {
-    const text = read(rel);
-    if (text.includes('[REPO_URL]') || text.includes('[HOSTED_DEMO_URL]')) {
-      warnings.push(`${rel} still contains deploy-time URL placeholders`);
-    }
-  }
-}
-
 if (!exists('.git')) {
   warnings.push('no git repository yet; do not initialize/commit before 2026-11-01T00:00:00Z');
 }
@@ -217,6 +203,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log('READY for the human-gated release sequence.');
-console.log('The hackathon window is open. Push/deploy/post/submit only with human approval.');
-console.log('Next: follow the human-gated steps in docs/DEPLOYMENT.md and the submission notes kept locally.');
+console.log('READY: all release preflight checks passed.');

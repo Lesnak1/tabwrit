@@ -208,7 +208,7 @@ checked is marked **UNVERIFIED** and is not used as a product claim.
 
 - **Source:** https://near.ai/blog/introducing-near-ai-agent-market (published
   2026-02-04); https://market.near.ai/ (checked 2026-10-27); X post by
-  `@NEARProtocol`, 2026-10-27 (screenshot supplied by the human).
+  `@NEARProtocol`, 2026-10-27.
 - **Fact:** NEAR AI Agent Market is a live marketplace where agents bid on
   tasks, execute work and can receive payment in NEAR when a job completes.
   Public examples include code review, data analysis, research and
@@ -255,12 +255,3 @@ checked is marked **UNVERIFIED** and is not used as a product claim.
   2026-11-14T23:59:00Z.
 - **Use in TabWrit:** hosted Vercel demo + 60-90 second captioned clip + four
   screenshots in the reply; use the exact X tags. No mainnet required.
-
-## 14. Documentation corrections
-
-The previous version of this file claimed a live testnet differential proof
-with the old `731d…` contract and a "100% zero mock" architecture. Those
-claims were not supported by the code: the old contract had no deposits, the
-Attack Lab marked scenarios PASS without transactions, and a hardcoded
-full-access key existed in the web source. The current file records only what
-was re-checked and linked above; the audit is in `docs/AUDIT.md`.

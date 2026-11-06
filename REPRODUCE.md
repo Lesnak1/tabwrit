@@ -172,5 +172,3 @@ on-chain route; it never shows a broken gasless option.
 - The testnet keys control testnet-only accounts and tokens. They have no
   mainnet value, but they are still secrets; rotate them if the folder or a
   zip was shared.
-- The prize payout address is a **mainnet** NEAR account. It is separate from
-  this testnet stack and must be created by the human, never invented.

@@ -82,11 +82,6 @@ Full testnet reproduction needs funded testnet accounts and keys. Use
 5. **Evidence:** `/lab` shows the 23/23 Attack Lab and the gasless, agent and
    x402 cards.
 
-The full 2:50 shooting script is in `docs/DEMO.md`; the Turkish voiceover
-companion is `docs/DEMO_TR.md`. The safe demo path is a 60-90 second captioned
-clip plus four screenshots in the X reply; the live Q-012 rule prefers a video
-when judges cannot open the demo. `docs/SCREENSHOTS.md` has the plan.
-
 ---
 
 ## Architecture in one screen

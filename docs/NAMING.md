@@ -52,21 +52,3 @@ contract, accounts, package imports or evidence.
 
 This is a brand change, not a protocol migration. Renaming the on-chain
 identities would invalidate the evidence and require a new deployment.
-
-## Availability checks (2026-10-26, preliminary)
-
-- `github.com/tabwrit` returned 404.
-- `x.com/tabwrit` returned 404.
-- `tabwrit.dev`, `.gg`, `.fi`, `.com` did not resolve in a DNS check;
-  `tabwrit.xyz` returned a certificate error.
-
-These are **preliminary** signals, not a legal or registrar guarantee. Before
-registering a domain or committing to the name, check:
-
-1. a domain registrar / WHOIS;
-2. GitHub organization and X handle availability;
-3. a trademark search in the relevant jurisdiction;
-4. the hackathon submission's unique project-name rule.
-
-The submission name is **TabWrit** (7 characters, within 2–80). If a judge or
-organizer needs a longer form, use **TabWrit Protocol**.

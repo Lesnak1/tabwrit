@@ -1,7 +1,7 @@
 /**
- * End-to-end test with the human-provided fresh testnet wallet.
+ * End-to-end test with a dedicated fresh testnet wallet.
  *
- * The wallet is `tab-tester.testnet` (created with the human's key). The
+ * The wallet is `tab-tester.testnet` (or `TESTER_ACCOUNT_ID`). The
  * script performs the exact owner flow the web app performs:
  *
  *   faucet -> deposit -> create Tab -> pause/resume -> merchant charge ->

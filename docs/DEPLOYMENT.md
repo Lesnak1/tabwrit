@@ -1,12 +1,9 @@
 # DEPLOYMENT.md — TabWrit web hosting and the testnet/mainnet boundary
 
 This guide covers the web app and the optional keeper. Contract deployment is
-covered by the scripts in `scripts/`; the mainnet steps require the human's
-explicit approval and are not automated.
+covered by the scripts in `scripts/`; mainnet deployment steps are manual.
 
-Run `pnpm release:preflight` before any push or deploy. The human-gated
-sequence is kept locally with the submission notes, not in the public
-repository.
+Run `pnpm release:preflight` before any release or deploy.
 
 Keep the hosted web app and keeper up through **2026-11-18**, ideally
 **2026-11-25**: the live hackathon rules say a hosted demo is a plus and judges
@@ -145,10 +142,9 @@ done changing the contract.
 
 ---
 
-## 3. Mainnet (human approval required)
+## 3. Mainnet deployment checklist
 
-Do **not** run these steps without the human's explicit "yes" in the current
-conversation. They deploy to mainnet and can spend real tokens.
+These steps deploy to mainnet and require real NEAR and USDC:
 
 1. Create a mainnet NEAR account with enough NEAR for storage/gas and USDC for
    a small settlement.
