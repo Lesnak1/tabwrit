@@ -7,6 +7,8 @@ pause, revoke or attach a deposit. **A prompt injection hits the contract, not
 the wallet.**
 
 **Tracks:** `security` (primary), `agents`, `realworld`.  
+**Differentiator:** one rule set for merchant checkout/subscriptions and
+agent x402/gasless payments, not agent-only.  
 **Naming:** TabWrit is the project; a Tab is the on-chain spending primitive.  
 **Demo video (75s, captioned):** https://x.com/LesnaCrex/status/2118706276091974069  
 **Live demo:** https://tabwrit.vercel.app  

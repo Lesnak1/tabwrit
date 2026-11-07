@@ -36,6 +36,9 @@ future work.
 
 ### Why this is different
 
+- **End-to-end, not agent-only.** The same rule set covers merchant checkout
+  and subscriptions as well as x402-style agent payments. Most agent guardrails
+  stop at the agent; TabWrit covers both sides of the spend.
 - **The spending rule is enforced on-chain, not by a backend.** Caps, expiry,
   allowlist, status and a monotonic nonce are checked by the vault contract.
 - **Prompt injection is contained on-chain.** A redirected agent charge is
