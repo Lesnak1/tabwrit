@@ -75,6 +75,8 @@ No wallet is needed for the hosted evidence:
 
 - **Watch:** the 75s captioned demo:
   https://x.com/LesnaCrex/status/2118706276091974069
+- **Open:** https://tabwrit.vercel.app/judge — read-only policy check:
+  allowed/denied charges for Tab #77, no wallet required.
 - **Open:** https://tabwrit.vercel.app/lab — the 23/23 Attack Lab and the
   gasless, agent and x402 cards.
 - **Open:** https://tabwrit.vercel.app/merchant — the invoice and live

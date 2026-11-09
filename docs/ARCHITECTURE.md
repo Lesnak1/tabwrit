@@ -315,6 +315,7 @@ app/page.tsx          landing: live vault stats, product explanation
 app/app/page.tsx      vault: connect, faucet, deposit, create, pause/revoke, withdraw
 app/merchant/page.tsx merchant checkout + live 1Click quote preview
 app/lab/page.tsx      committed 23/23 + gasless + agent + x402 evidence
+app/judge/page.tsx    read-only policy check; no wallet or transaction
 app/docs/page.tsx     architecture, API, security, limitations
 lib/wallet.tsx        HOT Labs NearConnector; wallet-signed calls
 lib/rpc.ts            read-only RPC views and formatting

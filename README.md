@@ -60,6 +60,10 @@ future work.
 
 ## Judge proof in 60 seconds
 
+**Try it without a wallet:** https://tabwrit.vercel.app/judge — load Tab #77
+and simulate an allowed charge, an over-cap charge, a redirected receiver and
+a replayed nonce. The page is read-only; it never signs or sends a transaction.
+
 ### The real-world story: Cloudline Monthly
 
 A 10 tUSDC invoice, once a month. The owner funds the vault, opens a 30-day
@@ -304,6 +308,7 @@ full testnet deployment, see [`REPRODUCE.md`](REPRODUCE.md).
 
 **No keys or wallet? Start here.** Watch the 75s demo
 (https://x.com/LesnaCrex/status/2118706276091974069), open
+https://tabwrit.vercel.app/judge for a read-only policy check, open
 https://tabwrit.vercel.app/lab, then run `pnpm test`, `pnpm demo` and
 `pnpm test:mcp`. These need no `.env` and no author keys. The manual wallet
 flow below is optional; steps 6-8 need funded testnet keys.
@@ -846,7 +851,7 @@ contracts/
     src/fuzz_tests.rs   randomized cap + conservation tests
   nep141-token/         Testnet tUSDC with a public faucet
 apps/
-  web/                  Next.js 14 app (wallet, vault, merchant, lab, docs)
+  web/                  Next.js 14 app (wallet, vault, merchant, lab, judge, docs)
     src/lib/wallet.tsx  HOT Labs wallet connector, wallet-signed calls
     src/lib/server-near.ts  server-only merchant charge (scoped key)
     src/lib/server-meta-tx.ts  NEP-366 delegate signing + relay call

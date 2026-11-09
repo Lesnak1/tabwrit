@@ -46,6 +46,9 @@ export default function RootLayout({
               <Link href="/lab" className="nav-link">
                 Attack Lab
               </Link>
+              <Link href="/judge" className="nav-link">
+                Policy
+              </Link>
               <Link href="/docs" className="nav-link">
                 Docs
               </Link>
