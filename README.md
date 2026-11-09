@@ -34,6 +34,13 @@ The hackathon requires a **working prototype** in a public repository and a
 public demo post. A mainnet settlement is *not* a requirement; it is optional
 future work.
 
+### Hackathon baseline
+
+The public repository was created on 2026-11-01. Its initial commit is the
+baseline; later commits are submission changes. The prototype and audit
+evidence are dated from 2026-10-19 onward, within the live `HACKATHON.md`
+Q-001 eligible-code window.
+
 ### Why this is different
 
 - **End-to-end, not agent-only.** The same rule set covers merchant checkout

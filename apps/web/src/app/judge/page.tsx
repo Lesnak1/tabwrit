@@ -41,6 +41,8 @@ function reasonDetail(reason: string): string {
       return 'The on-chain expiry timestamp has passed. Open a new Tab.';
     case 'ERR_NONCE_MISMATCH':
       return 'The nonce must equal the Tab next_nonce. A replay or an out-of-order charge is refused.';
+    case 'ERR_AMOUNT_ZERO':
+      return 'The contract rejects a zero amount with ERR_AMOUNT_ZERO.';
     case 'PER_CHARGE_CAP':
       return 'The amount is above the per-charge cap. This is checked before any token call.';
     case 'PERIOD_CAP':
@@ -84,7 +86,7 @@ export default function PolicyCheckPage() {
       }
       const [nextRemaining, nextBalance, nextConfig] = await Promise.all([
         getRemaining(id),
-        getVaultBalance(nextTab.owner),
+        getVaultBalance(nextTab.owner, nextTab.token),
         getConfig(),
       ]);
       setTab(nextTab);
@@ -131,18 +133,26 @@ export default function PolicyCheckPage() {
         const recipient = receiver.trim();
         const nowNs = BigInt(Date.now()) * 1_000_000n;
         let reason = '';
-        if (tab.status !== 'Active') reason = 'TAB_NOT_ACTIVE';
+        // Match contracts/tab-vault/src/lib.rs::charge order:
+        // nonce, amount > 0, status, expiry, per-charge, receiver,
+        // period, lifetime, balance.
+        if (nonceValue !== tab.next_nonce) reason = 'ERR_NONCE_MISMATCH';
+        else if (amountRaw <= 0n) reason = 'ERR_AMOUNT_ZERO';
+        else if (tab.status !== 'Active') reason = 'TAB_NOT_ACTIVE';
         else if (nowNs >= BigInt(tab.expires_at_ns)) reason = 'TAB_EXPIRED';
-        else if (nonceValue !== tab.next_nonce) reason = 'ERR_NONCE_MISMATCH';
         else if (amountRaw > BigInt(tab.per_charge_cap)) reason = 'PER_CHARGE_CAP';
-        else if (amountRaw > BigInt(remaining.remaining_in_period)) reason = 'PERIOD_CAP';
-        else if (amountRaw > BigInt(remaining.remaining_total)) reason = 'TOTAL_CAP';
         else if (
           tab.receiver_policy !== 'Any' &&
           !tab.receiver_policy.Allowlist.includes(recipient)
         ) {
           reason = 'RECEIVER_NOT_ALLOWED';
-        } else if (amountRaw > BigInt(balance)) reason = 'INSUFFICIENT_BALANCE';
+        } else if (amountRaw > BigInt(remaining.remaining_in_period)) {
+          reason = 'PERIOD_CAP';
+        } else if (amountRaw > BigInt(remaining.remaining_total)) {
+          reason = 'TOTAL_CAP';
+        } else if (amountRaw > BigInt(balance)) {
+          reason = 'INSUFFICIENT_BALANCE';
+        }
 
         if (reason) {
           setResult({
@@ -390,6 +400,11 @@ export default function PolicyCheckPage() {
             >
               Replay preset
             </button>
+          </div>
+
+          <div className="form-hint" style={{ marginTop: '0.7rem' }}>
+            A real charge must also be signed by the Tab spender key. This page
+            assumes that spender as the caller and sends nothing.
           </div>
 
           {error ? (

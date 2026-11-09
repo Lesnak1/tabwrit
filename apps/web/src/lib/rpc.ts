@@ -109,10 +109,13 @@ export async function getTokenMetadata(): Promise<TokenMetadata> {
   return rpcView<TokenMetadata>(TOKEN_ID, 'ft_metadata');
 }
 
-export async function getVaultBalance(owner: string): Promise<string> {
+export async function getVaultBalance(
+  owner: string,
+  token: string = TOKEN_ID
+): Promise<string> {
   return rpcView<string>(VAULT_ID, 'get_balance', {
     owner,
-    token: TOKEN_ID,
+    token,
   });
 }
 

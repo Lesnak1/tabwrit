@@ -151,6 +151,14 @@ export default function LandingPage() {
               </Link>
             </div>
 
+            <p className="hero-note" style={{ marginTop: '0.55rem' }}>
+              No wallet?{' '}
+              <Link href="/judge" className="tx-link">
+                Try the read-only policy check
+              </Link>
+              .
+            </p>
+
             <p className="hero-note">
               NEAR testnet · tUSDC has no monetary value · every charge is a
               real on-chain transaction ·{' '}
