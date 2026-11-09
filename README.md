@@ -58,6 +58,70 @@ future work.
 **Judge quickstart:** [`JUDGE.md`](JUDGE.md) · **Fresh-clone reproduction:**
 [`REPRODUCE.md`](REPRODUCE.md).
 
+## Judge proof in 60 seconds
+
+### The real-world story: Cloudline Monthly
+
+A 10 tUSDC invoice, once a month. The owner funds the vault, opens a 30-day
+Tab for `tab-merchant.testnet` with 10/30/120 tUSDC per-charge, per-period and
+lifetime caps, and allowlists the merchant. The merchant pulls the invoice
+gaslessly with NEP-366; the relayer pays gas. The owner can pause or revoke at
+any time, and the unspent vault balance stays withdrawable. This is the
+subscription flow in `/merchant`, not a mock.
+
+### Policy is data, not a prompt
+
+A human-readable view of the on-chain Tab fields (example: Tab #77 on testnet):
+
+```json
+{
+  "owner": "hardjava737.testnet",
+  "spender": "tab-merchant.testnet",
+  "token": "tab-usdc.testnet",
+  "per_charge_cap": "10000000",
+  "per_period_cap": "30000000",
+  "lifetime_cap": "120000000",
+  "period_secs": 2592000,
+  "receiver_policy": { "Allowlist": ["tab-merchant.testnet"] }
+}
+```
+
+The contract stores this policy, checks it before every token call, and gives
+the spender a Function-Call key that can only call `charge`. A prompt is not
+part of the enforcement path.
+
+### Escape matrix
+
+Every row is a real testnet result or a Rust invariant test; the full reports
+are in `docs/evidence/`.
+
+| Attempt | Contract answer | Evidence |
+| :--- | :--- | :--- |
+| Charge above per-charge cap | `PER_CHARGE_CAP` | S2 |
+| Period budget exhausted | `PERIOD_CAP` | S3b |
+| Lifetime cap exhausted | `TOTAL_CAP` | Rust fuzz test |
+| Receiver outside allowlist | `RECEIVER_NOT_ALLOWED` | S4, A1, M12 |
+| Replayed nonce | `ERR_NONCE_MISMATCH` | S11b |
+| Expired Tab | `TAB_EXPIRED` | S12 |
+| Paused or revoked Tab | `TAB_NOT_ACTIVE` | S5, S13b |
+| Unauthorized caller | `ERR_CALLER_NOT_SPENDER` | S7 |
+| FullAccess delegate | `KEY_NOT_SCOPED` | M9 |
+| x402 receipt replay / wrong payer / wrong amount | `RECEIPT_REPLAY`, `WRONG_PAYER`, `WRONG_AMOUNT` | X3, X5, X6 |
+| x402 over-cap / redirected receiver / revoked Tab | `PER_CHARGE_CAP`, `RECEIVER_NOT_ALLOWED`, `TAB_NOT_ACTIVE` | X8b, X7b, X9b |
+
+### One vault, many isolated Tabs
+
+```text
+owner vault (shared balance)
+  ├─ Tab A — merchant subscription — 10/30/120 tUSDC — allowlist merchant
+  └─ Tab B — agent API budget     —  1/5/50 tUSDC  — allowlist API
+```
+
+Each Tab has its own caps, nonce and expiry. Revoking one does not touch the
+other; both spend from the owner's vault ledger. This is how one owner can run
+a merchant relationship and several agents without handing any of them the
+vault key.
+
 ## Security-first design
 
 TabWrit is designed around one question: **what can a compromised merchant or

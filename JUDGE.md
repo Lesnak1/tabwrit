@@ -9,6 +9,9 @@ the wallet.**
 **Tracks:** `security` (primary), `agents`, `realworld`.  
 **Differentiator:** one rule set for merchant checkout/subscriptions and
 agent x402/gasless payments, not agent-only.  
+**Example:** a 10 tUSDC Cloudline invoice → owner opens a 30-day Tab → merchant
+charges gaslessly via NEP-366 → owner can pause/revoke; unspent balance stays
+withdrawable.  
 **Naming:** TabWrit is the project; a Tab is the on-chain spending primitive.  
 **Demo video (75s, captioned):** https://x.com/LesnaCrex/status/2118706276091974069  
 **Live demo:** https://tabwrit.vercel.app  
