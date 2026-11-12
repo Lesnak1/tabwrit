@@ -1,6 +1,7 @@
 # TabWrit — Contract-Enforced Spending Tabs on NEAR
 
 [![NEAR testnet](https://img.shields.io/badge/NEAR-testnet-00EC97)](https://testnet.nearblocks.io/address/tab-vault.testnet)
+[![Verified defenses](https://img.shields.io/badge/Verified%20defenses-68%2F68%20passing-brightgreen)](#6868-verified-defenses-zero-failed)
 [![Real testnet checks](https://img.shields.io/badge/Attack%20Lab-23%2F23%20on--chain-00EC97)](docs/evidence/testnet-e2e.json)
 [![NEP-366 gasless](https://img.shields.io/badge/NEP--366-12%2F12%20gasless-00EC97)](docs/evidence/meta-tx.json)
 [![x402 agent API](https://img.shields.io/badge/x402%20agent%20API-13%2F13%20on--chain-00EC97)](docs/evidence/agent-x402.json)
@@ -70,6 +71,19 @@ Q-001 eligible-code window.
 **Try it without a wallet:** https://tabwrit.vercel.app/judge — load Tab #77
 and simulate an allowed charge, an over-cap charge, a redirected receiver and
 a replayed nonce. The page is read-only; it never signs or sends a transaction.
+
+### 68/68 Verified Defenses (Zero Failed)
+
+TabWrit enforces every spending boundary directly in the smart contract and validates it across 68 automated, on-chain and invariant checks:
+
+| Suite | Checks | Scope | Evidence |
+| :--- | :---: | :--- | :--- |
+| **Rust VM Invariant Suite** | **16 / 16** | State transitions, storage bounds, callback rollback, monotonic caps | [`contracts/tab-vault/src/tests.rs`](contracts/tab-vault/src/tests.rs) |
+| **Attack Lab (Adversarial)** | **23 / 23** | Real testnet transactions: replay, overflow, unauthorized caller, caps | [`docs/evidence/testnet-e2e.json`](docs/evidence/testnet-e2e.json) |
+| **NEP-366 Gasless Relayer** | **12 / 12** | Meta-transactions, scoped key verification, FullAccess rejection | [`docs/evidence/meta-tx.json`](docs/evidence/meta-tx.json) |
+| **Prompt Injection Defense** | **4 / 4** | Attacker payee redirection stopped cold (`RECEIVER_NOT_ALLOWED`) | [`docs/evidence/agent-attack.json`](docs/evidence/agent-attack.json) |
+| **x402 Agent API Payment** | **13 / 13** | Paid fetch, receipt replay, wrong payer/amount, over-cap, revoked Tab | [`docs/evidence/agent-x402.json`](docs/evidence/agent-x402.json) |
+| **TOTAL VERIFIED DEFENSES** | **68 / 68** | **16 Rust VM tests + 52 live testnet on-chain transactions** | **100% PASS** |
 
 ### The real-world story: Cloudline Monthly
 

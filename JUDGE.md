@@ -19,7 +19,7 @@ withdrawable.
 
 ---
 
-## What is real on NEAR testnet
+## What is real on NEAR testnet (68/68 verified defenses)
 
 | Area | Evidence |
 | :--- | :--- |
@@ -28,6 +28,7 @@ withdrawable.
 | Gasless merchant + agent | **12/12** NEP-366 checks; merchant and agent NEAR balances unchanged |
 | Prompt injection | **4/4**; attacker charge rejected with `RECEIVER_NOT_ALLOWED` |
 | x402-style agent API | **13/13**; paid fetch, replay, wrong payer/amount, over-cap, redirect, revoke |
+| **Total Verified Defenses** | **68/68 PASS** (16 Rust VM tests + 52 live testnet on-chain transactions) |
 | Browser UI | **10/10**, 0 console errors; gasless merchant payment is a real `Delegate` transaction |
 | Agent/MCP | 6 tools, live read tools, real agent charge, x402 paid fetch |
 | Gas meter | `GET /relay/usage` and `pnpm test:relayer-usage`; actual gas per sender |
