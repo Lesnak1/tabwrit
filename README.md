@@ -908,6 +908,7 @@ docs/
   ARCHITECTURE.md       data model and flows
   SECURITY.md           threat model and invariants
   AUDIT.md              audit findings and fixes
+  CREDITS.md            open-source libraries, standards and external services
   DEPLOYMENT.md         web hosting + mainnet boundary
   NAMING.md             TabWrit name, brand hierarchy and availability notes
   SUSTAINABILITY.md     revenue model + measured relayer gas
@@ -967,6 +968,18 @@ If an account name already exists but its private key is not in your `.env`,
 the script warns instead of pretending it can deploy to it. Use a different
 name or import the key. The full fresh-clone and fresh-testnet steps are in
 [`REPRODUCE.md`](REPRODUCE.md).
+
+---
+
+## Credits
+
+All contracts, services, MCP tools, SDK modules and frontend pages were built
+inside the hackathon window using open-source libraries and NEAR standards:
+`near-sdk` / `near-contract-standards` (`5.29.1`), `near-api-js`,
+`@near-js/transactions`, `@noble/hashes`, `@modelcontextprotocol/sdk`, `zod`,
+`express`, `cors`, `next` (`14.2.35`), `react`, `@hot-labs/near-connect`,
+`lucide-react`, `wasm-opt`, and the live NEAR Intents 1Click API. Full
+attribution and links: [`docs/CREDITS.md`](docs/CREDITS.md).
 
 ---
 
