@@ -83,7 +83,7 @@ TabWrit enforces every spending boundary directly in the smart contract and vali
 | **NEP-366 Gasless Relayer** | **12 / 12** | Meta-transactions, scoped key verification, FullAccess rejection | [`docs/evidence/meta-tx.json`](docs/evidence/meta-tx.json) |
 | **Prompt Injection Defense** | **4 / 4** | Attacker payee redirection stopped cold (`RECEIVER_NOT_ALLOWED`) | [`docs/evidence/agent-attack.json`](docs/evidence/agent-attack.json) |
 | **x402 Agent API Payment** | **13 / 13** | Paid fetch, receipt replay, wrong payer/amount, over-cap, revoked Tab | [`docs/evidence/agent-x402.json`](docs/evidence/agent-x402.json) |
-| **TOTAL VERIFIED DEFENSES** | **68 / 68** | **16 Rust VM tests + 52 live testnet on-chain transactions** | **100% PASS** |
+| **TOTAL VERIFIED DEFENSES** | **68 / 68** | **16 Rust VM tests + 52 live testnet & integration checks** | **100% PASS** |
 
 ### The real-world story: Cloudline Monthly
 
@@ -105,7 +105,7 @@ A human-readable view of the on-chain Tab fields (example: Tab #77 on testnet):
   "token": "tab-usdc.testnet",
   "per_charge_cap": "10000000",
   "per_period_cap": "30000000",
-  "lifetime_cap": "120000000",
+  "total_cap": "120000000",
   "period_secs": 2592000,
   "receiver_policy": { "Allowlist": ["tab-merchant.testnet"] }
 }
@@ -273,8 +273,9 @@ replaced by a deployer.
 
 The latest full run is committed in
 [`docs/evidence/testnet-e2e.json`](docs/evidence/testnet-e2e.json):
-**23/23 checks passed**. Every row is a real transaction with a NearBlocks
-link. The same report is rendered at `/lab`.
+**23/23 checks passed** (19 transaction rows with NearBlocks links + 4
+post-state and ledger conservation checks). The same report is rendered at
+`/lab`.
 
 Selected receipts (full list in the evidence file):
 
